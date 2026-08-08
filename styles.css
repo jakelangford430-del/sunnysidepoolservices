@@ -188,57 +188,61 @@ a { color: var(--navy-700); }
 .hero-lede { color: rgba(255,255,255,.84); font-size: 1.05rem; margin: 0 0 1.6rem; max-width: 46ch; }
 .hero-sub { display: block; font-size: .87rem; color: rgba(255,255,255,.62); margin-top: .85rem; }
 
-/* --------------------------------------------------------- proof bar
-   Leads with the Google rating — the strongest signal available, and the
-   only one a visitor can independently check. Dividers appear only at the
-   four-across breakpoint, so wrapped rows never show a stray edge. */
+/* --------------------------------------------------------- proof card
+   Floats over the bottom edge of the hero. The dark-to-light transition is
+   the strongest structural moment on the page, so the card uses it rather
+   than sitting below it — the proof reads as one object, and the rating
+   leading it gets the emphasis it has earned.
 
-.proof-bar {
-  background: var(--navy-900);
-  border-bottom: 1px solid rgba(255,255,255,.08);
-  padding-block: .6rem;
+   Anything the card overlaps must carry `has-proof-card`, which adds the
+   bottom padding the overlap eats. Without it the card covers hero copy. */
+
+.proof-bar { background: var(--paper); padding-bottom: clamp(1.6rem, 3vw, 2.6rem); }
+
+.proof-card {
+  position: relative;
+  margin-top: calc(-1 * var(--proof-overlap, 3.2rem));
+  background: var(--paper);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-3);
+  display: grid; grid-template-columns: 1fr;
+  overflow: hidden;
 }
-.proof-grid { display: grid; grid-template-columns: 1fr; }
 
-.proof { padding-block: 1.25rem; border-top: 1px solid rgba(255,255,255,.1); }
+.proof {
+  display: block; padding: 1.35rem 1.5rem;
+  border-top: 1px solid var(--line);
+  text-decoration: none; color: inherit;
+}
 .proof:first-child { border-top: 0; }
 
 .proof-stars { display: flex; gap: 2px; }
-.proof-stars svg { width: 15px; height: 15px; color: var(--sun); flex: none; }
+.proof-stars svg { width: 16px; height: 16px; color: var(--sun); flex: none; }
 
 .proof-value {
-  display: block; font-size: clamp(1.5rem, 3.4vw, 2rem); font-weight: 800;
-  letter-spacing: -.035em; color: var(--sun); line-height: 1; margin-bottom: .3rem;
-  font-variant-numeric: tabular-nums;
+  display: block; font-size: clamp(1.4rem, 3vw, 1.65rem); font-weight: 800;
+  letter-spacing: -.035em; color: var(--navy-900); line-height: 1;
+  margin-bottom: .28rem; font-variant-numeric: tabular-nums;
 }
 /* two classes (0-2-0) so this wins over .proof-value regardless of source order */
-.proof-value.proof-value-rating { display: flex; align-items: center; gap: .55rem; }
+.proof-value.proof-value-rating { display: flex; align-items: center; gap: .5rem; }
 
-.proof-label { display: block; font-size: .84rem; color: rgba(255,255,255,.7); }
+.proof-label { display: block; font-size: .84rem; color: var(--ink-2); }
 
-a.proof {
-  text-decoration: none; color: inherit;
-  transition: background .16s ease;
-  border-radius: var(--r-sm);
-}
-a.proof .proof-label { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,.3); }
-a.proof:hover .proof-value { color: #FFC33F; }
-a.proof:hover .proof-label { color: #fff; text-decoration-color: var(--sun); }
+a.proof { transition: background .16s ease; }
+a.proof .proof-label { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
+a.proof:hover { background: var(--mist); }
+a.proof:hover .proof-label { color: var(--ink); text-decoration-color: var(--sun-600); }
 
-@media (min-width: 640px) {
-  .proof-grid { grid-template-columns: repeat(2, 1fr); column-gap: 2rem; }
-  .proof:nth-child(-n+2) { border-top: 0; }
+@media (min-width: 820px) {
+  .proof-card { grid-template-columns: repeat(3, 1fr); }
+  .proof { border-top: 0; padding: 1.6rem 1.75rem; }
+  .proof + .proof { border-left: 1px solid var(--line); }
 }
-@media (min-width: 980px) {
-  .proof-grid { grid-template-columns: repeat(4, 1fr); column-gap: 0; }
-  .proof {
-    border-top: 0; padding-block: 1.5rem;
-    padding-inline: clamp(1rem, 2.2vw, 2rem);
-  }
-  .proof + .proof { border-left: 1px solid rgba(255,255,255,.12); }
-  .proof:first-child { padding-inline-start: 0; }
-  .proof:last-child { padding-inline-end: 0; }
-}
+
+/* room for the overlap */
+.hero.has-proof-card .hero-inner { padding-bottom: clamp(4.8rem, 8vw, 5.8rem); }
+.section-navy.has-proof-card { padding-bottom: clamp(5rem, 8vw, 6.2rem); }
 
 /* --------------------------------------------------------- sections */
 
