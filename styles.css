@@ -188,16 +188,57 @@ a { color: var(--navy-700); }
 .hero-lede { color: rgba(255,255,255,.84); font-size: 1.05rem; margin: 0 0 1.6rem; max-width: 46ch; }
 .hero-sub { display: block; font-size: .87rem; color: rgba(255,255,255,.62); margin-top: .85rem; }
 
-/* --------------------------------------------------------- trust bar */
+/* --------------------------------------------------------- proof bar
+   Leads with the Google rating — the strongest signal available, and the
+   only one a visitor can independently check. Dividers appear only at the
+   four-across breakpoint, so wrapped rows never show a stray edge. */
 
-.trust-bar { background: var(--navy-900); padding-block: 1.8rem; }
-.trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.4rem; }
-.trust-grid strong {
-  display: block; font-size: clamp(1.55rem, 3.6vw, 2.1rem); font-weight: 800;
-  letter-spacing: -.035em; color: var(--sun); line-height: 1; margin-bottom: .28rem;
+.proof-bar {
+  background: var(--navy-900);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding-block: .6rem;
+}
+.proof-grid { display: grid; grid-template-columns: 1fr; }
+
+.proof { padding-block: 1.25rem; border-top: 1px solid rgba(255,255,255,.1); }
+.proof:first-child { border-top: 0; }
+
+.proof-stars { display: flex; gap: 2px; }
+.proof-stars svg { width: 15px; height: 15px; color: var(--sun); flex: none; }
+
+.proof-value {
+  display: block; font-size: clamp(1.5rem, 3.4vw, 2rem); font-weight: 800;
+  letter-spacing: -.035em; color: var(--sun); line-height: 1; margin-bottom: .3rem;
   font-variant-numeric: tabular-nums;
 }
-.trust-grid span { font-size: .84rem; color: rgba(255,255,255,.7); }
+/* two classes (0-2-0) so this wins over .proof-value regardless of source order */
+.proof-value.proof-value-rating { display: flex; align-items: center; gap: .55rem; }
+
+.proof-label { display: block; font-size: .84rem; color: rgba(255,255,255,.7); }
+
+a.proof {
+  text-decoration: none; color: inherit;
+  transition: background .16s ease;
+  border-radius: var(--r-sm);
+}
+a.proof .proof-label { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,.3); }
+a.proof:hover .proof-value { color: #FFC33F; }
+a.proof:hover .proof-label { color: #fff; text-decoration-color: var(--sun); }
+
+@media (min-width: 640px) {
+  .proof-grid { grid-template-columns: repeat(2, 1fr); column-gap: 2rem; }
+  .proof:nth-child(-n+2) { border-top: 0; }
+}
+@media (min-width: 980px) {
+  .proof-grid { grid-template-columns: repeat(4, 1fr); column-gap: 0; }
+  .proof {
+    border-top: 0; padding-block: 1.5rem;
+    padding-inline: clamp(1rem, 2.2vw, 2rem);
+  }
+  .proof + .proof { border-left: 1px solid rgba(255,255,255,.12); }
+  .proof:first-child { padding-inline-start: 0; }
+  .proof:last-child { padding-inline-end: 0; }
+}
 
 /* --------------------------------------------------------- sections */
 

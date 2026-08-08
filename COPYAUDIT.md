@@ -26,6 +26,9 @@ Source: https://www.sunnysidepoolservices.com.au/ and Sunnyside's Google Busines
 - Green pool recovery scope: algae treatment, filtration setup and water balancing
 - Renovation scope: resurfacing, repairs and pool makeovers
 - Customer reviews: six reproduced verbatim from Google, captured 8 August 2026 — Dhanushka Sigera, Mina Salib, Daphne Whiteside, Conner Maitland, Fale Talaepa, Karl Fisher
+- Google rating: 5.0 from 20 reviews, confirmed on the Google Business Profile 8 August 2026
+- Google Business Profile: https://share.google/x0TZIAeJNAugILFP8
+- Google category: Swimming pool contractor
 
 ## Supplied directly by Sunnyside
 
@@ -61,16 +64,25 @@ Provided for the rebuild, not independently confirmed on a public source:
 
 - **Service area widened to Western Australia** at Daniel's direction, including `areaServed` in the LocalBusiness schema. Previously Perth metro. Copy still leads with Perth where natural, since that is where search volume sits.
 - **`60+` reworded** from "regular cleans every month" to "60+ regular pool cleans for ongoing clients". The monthly framing is no longer used.
-- **Review count is deliberately not displayed.** Note that the count is public on the Google profile regardless, and adding `aggregateRating` to the schema later would require it.
+- **Review count is deliberately not displayed** in visible copy. It is present in `aggregateRating` schema, which requires it, and is public on the Google profile regardless.
+- **Rating published.** 5.0 shown in the proof bar on Home, Services and Contact, linked to the Google profile so a visitor can check it. `aggregateRating` (5.0 / 20) added to LocalBusiness schema on all four pages, with the profile as `sameAs`.
 - **Reviews are quoted in full only.** Reviews truncated by Google's "…More" link were left out rather than clipped mid-sentence or completed by guesswork.
+
+## Conflict to resolve: service area
+
+The site states Western Australia, including `areaServed` in the schema, at Daniel's direction.
+
+Sunnyside's own Google Business Profile draws a much tighter service area — a polygon covering Joondalup, Ellenbrook, Perth, Fremantle, Rockingham and Mandurah. That is the Perth metropolitan area plus Peel, not the state.
+
+Google uses the Business Profile service area for local ranking, so the two should agree. Either widen the profile to match the site, or narrow the site to metro and note that renovation, equipment and one-off work travels further — which is what the Contact page already says.
 
 ## Still outstanding
 
-- **Star rating.** Not displayed anywhere. Needs the exact rating plus the public Google profile URL before it can go into visible copy or `aggregateRating` schema.
 - **Before/after photography.** None exists. The module is not built until real matched pairs are supplied.
 - **Certifications, licences, insurance.** None evidenced. No trust badges are shown.
 - **Gallery photography.** No photographs of completed Sunnyside work are available.
 - Truncated Google reviews (David, Stefunia G, Ebony H, Kate Baxter, Rebecca Lamont, conno749, K P) can be added once supplied complete.
+- **Opening hours.** The Google profile shows "Opens 7am Mon" but the full week was not captured. Supply the trading hours and `openingHoursSpecification` can be added to the schema.
 
 ## Image sources
 
