@@ -1,20 +1,21 @@
 # Sunnyside Pool Services copy audit
 
-Audit completed: 6 August 2026
+Original audit: 6 August 2026
+Last updated: 8 August 2026 (rebuild — core four pages)
 
 ## Evidence standard
 
 Website copy is limited to:
 
-- facts published on Sunnyside's existing website;
+- facts published on Sunnyside's existing website or Google Business Profile;
 - facts supplied directly by Sunnyside for this rebuild; or
 - technical guidance supported by an official health or manufacturer source.
 
 Marketing language must not imply a rating, customer consensus, qualification, guarantee or service area that has not been evidenced.
 
-## Verified on Sunnyside's existing website
+## Verified
 
-Source: https://www.sunnysidepoolservices.com.au/
+Source: https://www.sunnysidepoolservices.com.au/ and Sunnyside's Google Business Profile
 
 - Business name: Sunnyside Pool Services
 - Business history: founded in 2018
@@ -24,20 +25,19 @@ Source: https://www.sunnysidepoolservices.com.au/
 - Regular maintenance scope: cleaning, water balancing and equipment checks
 - Green pool recovery scope: algae treatment, filtration setup and water balancing
 - Renovation scope: resurfacing, repairs and pool makeovers
-- Published customer review: Alice C. quote reproduced verbatim on the rebuilt site
+- Customer reviews: six reproduced verbatim from Google, captured 8 August 2026 — Dhanushka Sigera, Mina Salib, Daphne Whiteside, Conner Maitland, Fale Talaepa, Karl Fisher
 
 ## Supplied directly by Sunnyside
 
-These statements were provided for the rebuild but were not independently confirmed on the public website:
+Provided for the rebuild, not independently confirmed on a public source:
 
 - Founded by Daniel
-- Perth, Western Australia service location
-- Over 60 regular cleans every month
+- Service area: Western Australia
+- 60+ regular pool cleans for ongoing clients
 - Equipment repair and assessment services
 - Fibreglass renovation services
-- Phone-first enquiries with no online booking flow on the rebuilt site
-
-These may remain on the website as business-supplied facts. Daniel should confirm them before production launch.
+- Testing technology used to read water chemistry, filtration, circulation and equipment condition
+- Phone-first enquiries; no online booking or enquiry form on the rebuilt site
 
 ## Technical sources
 
@@ -48,22 +48,31 @@ These may remain on the website as business-supplied facts. Daniel should confir
 
 ## Unsupported copy removed or corrected
 
-- Removed the unverified `5.0` rating and `19` review count from visible copy and LocalBusiness schema.
-- Removed statements presented as broad customer sentiment when only one sourced review was available.
-- Changed `Top 10` to `10 common` because no search-volume evidence established a ranked top ten.
-- Named locations are now shown only as representative Perth imagery. Service availability still requires confirmation by phone.
+- Removed the unverified `5.0` rating and review count from visible copy and LocalBusiness schema.
+- Removed statements presented as broad customer sentiment. Real Google reviews now carry that job.
+- Changed `Top 10` to a knowledge-hub framing because no search-volume evidence established a ranked top ten.
 - Removed the unsupported `24 to 72 hours` green-pool recovery timeframe.
 - Corrected water testing from weekly to HealthyWA's at-least-daily guidance.
 - Corrected pH and outdoor stabilised-pool chlorine guidance to HealthyWA ranges.
-- Replaced unsupported `proven` and `expert` claims with specific service descriptions and technical knowledge.
+- Removed `proven`, `expert`, `specialist` and `trusted` claims in favour of specific, checkable statements.
+- Removed the Alice C. quote — sourced only to the old website, superseded by the dated Google reviews.
 
-## Launch check
+## Changes made 8 August 2026
 
-Before publishing, Daniel should confirm the business-supplied facts above. A current Google Business Profile or review-platform link is required before adding a live star rating, review count or further attributed customer reviews.
+- **Service area widened to Western Australia** at Daniel's direction, including `areaServed` in the LocalBusiness schema. Previously Perth metro. Copy still leads with Perth where natural, since that is where search volume sits.
+- **`60+` reworded** from "regular cleans every month" to "60+ regular pool cleans for ongoing clients". The monthly framing is no longer used.
+- **Review count is deliberately not displayed.** Note that the count is public on the Google profile regardless, and adding `aggregateRating` to the schema later would require it.
+- **Reviews are quoted in full only.** Reviews truncated by Google's "…More" link were left out rather than clipped mid-sentence or completed by guesswork.
+
+## Still outstanding
+
+- **Star rating.** Not displayed anywhere. Needs the exact rating plus the public Google profile URL before it can go into visible copy or `aggregateRating` schema.
+- **Before/after photography.** None exists. The module is not built until real matched pairs are supplied.
+- **Certifications, licences, insurance.** None evidenced. No trust badges are shown.
+- **Gallery photography.** No photographs of completed Sunnyside work are available.
+- Truncated Google reviews (David, Stefunia G, Ebony H, Kate Baxter, Rebecca Lamont, conno749, K P) can be added once supplied complete.
 
 ## Image sources
 
-- Scarborough Beach photograph by Benjamin Shaw: https://commons.wikimedia.org/wiki/File:Western_Australia_Perth_Scarborough_Beach_Indian_Ocean_Rendezvous_Hotel.jpg (CC BY-SA 4.0)
-- Mullaloo Beach photograph by Andy Robertson: https://commons.wikimedia.org/wiki/File:Mullaloo_Beach.jpg (public domain)
-- Cottesloe Beach photograph by Calistemon: https://commons.wikimedia.org/wiki/File:Cottesloe_Beach,_May_2021_01.jpg (CC BY-SA 4.0)
-- Residential pool photographs were generated specifically for this rebuild and are labelled as representative settings, not completed Sunnyside projects.
+- Hero and equipment photographs were generated for this rebuild and depict representative settings, not completed Sunnyside projects.
+- `sunnyside-logo.png` (transparent) and `sunnyside-logo-reversed.png` (white wordmark) were derived from the supplied `sunnyside-logo-web.png`, whose canvas was opaque white and therefore unusable on dark surfaces. The original vector should be obtained if it still exists.
