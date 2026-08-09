@@ -16,8 +16,11 @@
   --navy-900: #0B2338;
   --navy-800: #10314C;
   --navy-700: #14456B;
-  --sun:      #F5B31E;
-  --sun-600:  #DC9A05;
+  --sun:      #F5B31E;  /* accent on DARK grounds and fills only */
+  /* Accent used as text or marks on LIGHT grounds. The old #DC9A05 measured
+     2.42:1 on white — a WCAG AA failure at any size. This is 5.93:1 on white
+     and 5.41:1 on mist. Never set accent text on light using --sun. */
+  --sun-ink:  #8A5A00;
 
   /* surfaces + ink (neutrals carry a navy bias, not pure grey) */
   --paper: #FFFFFF;
@@ -232,7 +235,7 @@ a { color: var(--navy-700); }
 a.proof { transition: background .16s ease; }
 a.proof .proof-label { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
 a.proof:hover { background: var(--mist); }
-a.proof:hover .proof-label { color: var(--ink); text-decoration-color: var(--sun-600); }
+a.proof:hover .proof-label { color: var(--ink); text-decoration-color: var(--sun-ink); }
 
 @media (min-width: 820px) {
   .proof-card { grid-template-columns: repeat(3, 1fr); }
@@ -254,7 +257,7 @@ a.proof:hover .proof-label { color: var(--ink); text-decoration-color: var(--sun
 .section-head.center { margin-inline: auto; text-align: center; }
 .kicker {
   font-family: var(--mono); font-size: .66rem; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--sun-600); margin: 0 0 .7rem;
+  color: var(--sun-ink); margin: 0 0 .7rem;
 }
 .section-navy .kicker { color: var(--sun); }
 h2 {
@@ -267,7 +270,7 @@ h2 {
   line-height: 1.05; margin: 0 0 .7rem; max-width: 20ch; text-wrap: balance;
 }
 .page-title em { font-style: normal; color: var(--sun); }
-h2 em { font-style: normal; color: var(--sun-600); }
+h2 em { font-style: normal; color: var(--sun-ink); }
 .section-navy h2 em, .final-cta h2 em { color: var(--sun); }
 .lede { color: var(--ink-2); font-size: 1.02rem; margin: 0; max-width: 62ch; }
 .section-navy .lede { color: rgba(255,255,255,.78); }
@@ -296,7 +299,7 @@ h2 em { font-style: normal; color: var(--sun-600); }
   display: flex; align-items: center; gap: .4rem;
 }
 .card h3 svg { width: 15px; height: 15px; color: var(--ink-3); transition: transform .18s ease, color .18s ease; }
-.card:hover h3 svg { transform: translateX(3px); color: var(--sun-600); }
+.card:hover h3 svg { transform: translateX(3px); color: var(--sun-ink); }
 .card p { font-size: .93rem; color: var(--ink-2); margin: 0; }
 
 /* --------------------------------------------------------- tick list */
@@ -373,7 +376,7 @@ h2 em { font-style: normal; color: var(--sun-600); }
   padding: 1.5rem; position: relative; overflow: hidden;
 }
 .step::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--sun); }
-.step-n { font-family: var(--mono); font-size: .7rem; letter-spacing: .14em; color: var(--sun-600); margin-bottom: .9rem; }
+.step-n { font-family: var(--mono); font-size: .7rem; letter-spacing: .14em; color: var(--sun-ink); margin-bottom: .9rem; }
 .step h3 { font-size: 1.08rem; font-weight: 800; letter-spacing: -.022em; margin: 0 0 .4rem; }
 .step p { font-size: .93rem; color: var(--ink-2); margin: 0; }
 
@@ -392,7 +395,7 @@ h2 em { font-style: normal; color: var(--sun-600); }
 }
 .faq-item > summary::-webkit-details-marker { display: none; }
 .faq-item > summary::after {
-  content: "+"; margin-left: auto; color: var(--sun-600); font-weight: 800;
+  content: "+"; margin-left: auto; color: var(--sun-ink); font-weight: 800;
   font-size: 1.3rem; line-height: 1; flex: none;
 }
 .faq-item[open] > summary::after { content: "\2212"; }
@@ -419,7 +422,7 @@ h2 em { font-style: normal; color: var(--sun-600); }
   font-size: 1.25rem; font-weight: 800; letter-spacing: -.025em;
   color: var(--navy-900); text-decoration: none; overflow-wrap: anywhere;
 }
-.contact-value:hover { color: var(--sun-600); }
+.contact-value:hover { color: var(--sun-ink); }
 
 /* --------------------------------------------------------- service areas */
 
@@ -442,7 +445,7 @@ h2 em { font-style: normal; color: var(--sun-600); }
   text-transform: uppercase; color: var(--ink-3); margin: 0;
 }
 .prep p { display: grid; grid-template-columns: 18px 1fr; gap: .6rem; font-size: .93rem; color: var(--ink-2); margin: 0; }
-.prep svg { width: 15px; height: 15px; color: var(--sun-600); margin-top: .3rem; }
+.prep svg { width: 15px; height: 15px; color: var(--sun-ink); margin-top: .3rem; }
 
 /* --------------------------------------------------------- final cta */
 
