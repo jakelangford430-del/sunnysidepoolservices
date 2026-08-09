@@ -41,6 +41,11 @@ Provided for the rebuild, not independently confirmed on a public source:
 - Fibreglass renovation services
 - Testing technology used to read water chemistry, filtration, circulation and equipment condition
 - Phone-first enquiries; no online booking or enquiry form on the rebuilt site
+- One-off jobs and one-off cleans offered alongside regular servicing
+- Attendance not required; pool-area access can be arranged by lock box or similar
+- Invoiced after the work, payable within 7 days
+- Fully insured
+- Chemicals supplied by Sunnyside
 
 ## Technical sources
 
@@ -83,6 +88,9 @@ One deliberate exception: `contactPoint.areaServed` on the Contact page stays `A
 - **Certifications, licences, insurance.** None evidenced. No trust badges are shown.
 - **Gallery photography.** No photographs of completed Sunnyside work are available.
 - Truncated Google reviews (David, Stefunia G, Ebony H, Kate Baxter, Rebecca Lamont, conno749, K P) can be added once supplied complete.
+- **Chemicals: included or billed?** The site says Sunnyside supplies them, which is what Daniel confirmed. It does not say whether the cost sits inside the service price or on top, because that was not stated. Competitors publish "+ chemicals", so customers will ask.
+- **Damage during a service.** No answer yet on what happens if something breaks while Sunnyside is working on a pool. Insurance is confirmed, the process is not.
+- **Pricing.** Still unpublished. The single most-asked question on a phone-only site.
 - **Opening hours.** The Google profile shows "Opens 7am Mon" but the full week was not captured. Supply the trading hours and `openingHoursSpecification` can be added to the schema.
 
 ## Image sources
