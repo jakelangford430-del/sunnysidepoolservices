@@ -29,13 +29,13 @@ Source: https://www.sunnysidepoolservices.com.au/ and Sunnyside's Google Busines
 - Google rating: 5.0 from 20 reviews, confirmed on the Google Business Profile 8 August 2026
 - Google Business Profile: https://share.google/x0TZIAeJNAugILFP8
 - Google category: Swimming pool contractor
+- Service area, per the Google profile map: Perth, Joondalup, Ellenbrook, Fremantle, Rockingham, Mandurah
 
 ## Supplied directly by Sunnyside
 
 Provided for the rebuild, not independently confirmed on a public source:
 
 - Founded by Daniel
-- Service area: Western Australia
 - 60+ regular pool cleans for ongoing clients
 - Equipment repair and assessment services
 - Fibreglass renovation services
@@ -62,19 +62,20 @@ Provided for the rebuild, not independently confirmed on a public source:
 
 ## Changes made 8 August 2026
 
-- **Service area widened to Western Australia** at Daniel's direction, including `areaServed` in the LocalBusiness schema. Previously Perth metro. Copy still leads with Perth where natural, since that is where search volume sits.
+- **Service area set to match the Google Business Profile.** Copy and `areaServed` now name the six places the profile's map covers, rather than claiming the state. Site and profile agree, which is what Google ranks local results on.
+- **Out-of-area enquiries welcomed explicitly.** The Contact page says Daniel is happy to talk it through, take details and add them to the database — so the narrower area reads as honest rather than as a closed door.
 - **`60+` reworded** from "regular cleans every month" to "60+ regular pool cleans for ongoing clients". The monthly framing is no longer used.
 - **Review count is deliberately not displayed** in visible copy. It is present in `aggregateRating` schema, which requires it, and is public on the Google profile regardless.
 - **Rating published.** 5.0 shown in the proof bar on Home, Services and Contact, linked to the Google profile so a visitor can check it. `aggregateRating` (5.0 / 20) added to LocalBusiness schema on all four pages, with the profile as `sameAs`.
 - **Reviews are quoted in full only.** Reviews truncated by Google's "…More" link were left out rather than clipped mid-sentence or completed by guesswork.
 
-## Conflict to resolve: service area
+## Resolved: service area
 
-The site states Western Australia, including `areaServed` in the schema, at Daniel's direction.
+The site previously claimed Western Australia while the Google Business Profile drew a Perth metro plus Peel polygon. Resolved 8 August 2026 by narrowing the site to match the profile.
 
-Sunnyside's own Google Business Profile draws a much tighter service area — a polygon covering Joondalup, Ellenbrook, Perth, Fremantle, Rockingham and Mandurah. That is the Perth metropolitan area plus Peel, not the state.
+Visible copy and `areaServed` now name Perth, Joondalup, Ellenbrook, Fremantle, Rockingham and Mandurah. The Contact page lists them and invites out-of-area callers to have their details taken for the database.
 
-Google uses the Business Profile service area for local ranking, so the two should agree. Either widen the profile to match the site, or narrow the site to metro and note that renovation, equipment and one-off work travels further — which is what the Contact page already says.
+One deliberate exception: `contactPoint.areaServed` on the Contact page stays `AU-WA`. The service run is metro; who Daniel will *talk to* is not.
 
 ## Still outstanding
 

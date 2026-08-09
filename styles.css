@@ -421,6 +421,29 @@ h2 em { font-style: normal; color: var(--sun-600); }
 }
 .contact-value:hover { color: var(--sun-600); }
 
+/* --------------------------------------------------------- service areas */
+
+.area-list {
+  display: flex; flex-wrap: wrap; gap: .5rem;
+  margin: 1.3rem 0 0; padding: 0; list-style: none;
+}
+.area-list li {
+  font-size: .88rem; font-weight: 600; color: var(--navy-900);
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 999px; padding: .42rem .9rem;
+}
+
+.prep {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;
+  margin-top: 2.2rem; padding-top: 1.8rem; border-top: 1px solid var(--line);
+}
+.prep h3 {
+  grid-column: 1 / -1; font-size: .76rem; font-weight: 700; letter-spacing: .13em;
+  text-transform: uppercase; color: var(--ink-3); margin: 0;
+}
+.prep p { display: grid; grid-template-columns: 18px 1fr; gap: .6rem; font-size: .93rem; color: var(--ink-2); margin: 0; }
+.prep svg { width: 15px; height: 15px; color: var(--sun-600); margin-top: .3rem; }
+
 /* --------------------------------------------------------- final cta */
 
 .final-cta {
