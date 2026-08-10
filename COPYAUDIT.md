@@ -96,4 +96,6 @@ One deliberate exception: `contactPoint.areaServed` on the Contact page stays `A
 ## Image sources
 
 - Hero and equipment photographs were generated for this rebuild and depict representative settings, not completed Sunnyside projects.
+- The two residential pool photographs on the services page (`assets/pools/everyday-perth-pool-*`, `assets/pools/routine-pool-maintenance-*`) are the same category and carry an on-page note saying so. They must not be captioned as Sunnyside's completed work, and must not be used in a gallery or as before/after evidence, unless Daniel confirms they are photographs of real jobs and supplies the customer consents.
+- Those two were re-encoded from 1800px masters to 1200w/800w WebP with a 1200w JPEG fallback. The four unoptimised originals at the repository root (1.6 MB combined) were removed; the served set is 592 KB.
 - `sunnyside-logo.png` (transparent) and `sunnyside-logo-reversed.png` (white wordmark) were derived from the supplied `sunnyside-logo-web.png`, whose canvas was opaque white and therefore unusable on dark surfaces. The original vector should be obtained if it still exists.
