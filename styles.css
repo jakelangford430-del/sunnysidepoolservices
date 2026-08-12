@@ -102,6 +102,7 @@ a { color: var(--navy-700); }
   max-width: var(--wrap); margin-inline: auto; padding-inline: var(--pad);
 }
 .brand { display: block; flex: none; line-height: 0; }
+.brand picture { display: block; }
 .brand img { height: 42px; width: auto; }
 
 .nav-links { display: none; gap: 1.6rem; margin-left: auto; }
@@ -367,10 +368,11 @@ h2 em { font-style: normal; color: var(--sun-ink); }
 .review-meta { font-size: .79rem; color: var(--ink-3); }
 .review-feature .review-meta { color: rgba(255,255,255,.55); }
 .review-source {
-  margin: 1.5rem 0 0; font-size: .87rem; color: var(--ink-3); max-width: 70ch;
-  padding-top: 1.1rem; border-top: 1px solid var(--line);
+  margin: 1.3rem 0 0; font-size: .82rem; color: var(--ink-3); max-width: 70ch;
+  padding-top: 1rem; border-top: 1px solid var(--line);
 }
-.review-source strong { color: var(--ink); }
+.review-source a { color: var(--ink-2); text-decoration-color: var(--line); }
+.review-source a:hover { color: var(--ink); }
 
 /* --------------------------------------------------------- split + panel */
 
@@ -427,12 +429,17 @@ h2 em { font-style: normal; color: var(--sun-ink); }
 .faq-item[open] > summary::after { content: "\2212"; }
 .faq-item p { color: var(--ink-2); margin: .9rem 0 0; font-size: .96rem; }
 
-.source-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .8rem; }
-.source-list li {
-  background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 1.1rem 1.3rem;
+/* Provenance matters but does not deserve a full section with a heading, a
+   lede and four bordered cards — it was shouting louder than the answers it
+   supports. One quiet line, set as a footnote. */
+.section-sources { padding-block: 0 clamp(2.4rem, 5vw, 3.4rem); }
+.sources-line {
+  margin: 0; padding-top: 1.1rem; border-top: 1px solid var(--line);
+  font-size: .82rem; line-height: 1.65; color: var(--ink-3);
 }
-.source-list a { font-weight: 700; overflow-wrap: anywhere; }
-.source-list span { display: block; color: var(--ink-2); font-size: .89rem; margin-top: .35rem; }
+.sources-line span { font-weight: 700; color: var(--ink-2); }
+.sources-line a { color: var(--ink-2); text-decoration-color: var(--line); overflow-wrap: anywhere; }
+.sources-line a:hover { color: var(--ink); }
 
 /* --------------------------------------------------------- contact */
 
@@ -481,7 +488,10 @@ h2 em { font-style: normal; color: var(--sun-ink); }
 }
 .final-cta h2 { margin-inline: auto; max-width: 18ch; }
 .final-cta p { color: rgba(255,255,255,.78); margin: 0 auto 1.8rem; max-width: 46ch; }
-.final-cta-note { margin: 1.2rem auto 0; font-size: .88rem; color: rgba(255,255,255,.58); }
+/* qualified with p to outrank `.final-cta p` (0-1-1), whose margin-bottom of
+   1.8rem was otherwise beating this shorthand's 0 and leaving a phantom
+   28.8px under the closing line at every width */
+.final-cta p.final-cta-note { margin: 1.2rem auto 0; font-size: .88rem; color: rgba(255,255,255,.58); }
 
 /* --------------------------------------------------------- footer */
 
@@ -491,6 +501,7 @@ h2 em { font-style: normal; color: var(--sun-ink); }
   padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,.12);
 }
 @media (min-width: 620px) { .footer-top { grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); } }
+.footer-brand picture { display: block; }
 .footer-brand img { height: 46px; width: auto; margin-bottom: 1rem; }
 .footer-brand p { font-size: .89rem; max-width: 32ch; margin: 0 0 1rem; }
 .footer-tel {
@@ -522,5 +533,23 @@ h2 em { font-style: normal; color: var(--sun-ink); }
 }
 .call-dock .btn { width: 100%; padding-block: .85rem; }
 @media (min-width: 940px) { .call-dock { display: none; } }
-/* keep the dock from covering the end of the page */
-@media (max-width: 939px) { .site-footer { padding-bottom: 5.5rem; } }
+
+/* One call action on mobile, and it is the dock.
+   The dock is position:fixed, so any other call button is on screen at the
+   same time rather than merely further down the page — the header pill, the
+   hero button and the closing button all sat in the first viewport together,
+   three identical yellow buttons. Below 940px the dock is the only one; it
+   never leaves the screen, so nothing is lost by hiding the rest. The header
+   pill also wrapped "0437 283 972" onto two lines at 390px and crowded the
+   logo, which is the cramped top-right corner. */
+@media (max-width: 939px) {
+  .header-cta,
+  .hero .btn-sun,
+  .final-cta .btn-sun { display: none; }
+  /* the closing section was sized around a button that is no longer there,
+     leaving 77px of empty navy under the last line */
+  .final-cta { padding-bottom: clamp(1.8rem, 4vw, 2.4rem); }
+  /* keep the dock from covering the end of the page — 5.5rem left only 13px
+     between the last footer line and the dock */
+  .site-footer { padding-bottom: 6.5rem; }
+}
