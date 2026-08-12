@@ -324,10 +324,6 @@ h2 em { font-style: normal; color: var(--sun-ink); }
   display: block; color: var(--ink); font-weight: 700;
   font-size: .95rem; letter-spacing: -.015em; margin-bottom: .2rem;
 }
-.shots-note {
-  margin: 1.4rem 0 0; padding-top: 1.1rem; border-top: 1px solid var(--line);
-  font-size: .85rem; color: var(--ink-2); max-width: 70ch;
-}
 
 /* --------------------------------------------------------- tick list */
 
@@ -508,6 +504,18 @@ h2 em { font-style: normal; color: var(--sun-ink); }
   display: inline-block; color: var(--sun); font-weight: 800;
   font-size: 1.15rem; letter-spacing: -.02em; text-decoration: none;
 }
+/* 44px tap targets, so the icons stay usable on a phone even though the glyph
+   inside is 20px — the footer sits right above the fixed call dock. */
+.footer-social { display: flex; gap: .35rem; margin-top: 1.1rem; }
+.footer-social a {
+  display: grid; place-items: center; width: 44px; height: 44px; margin-left: -10px;
+  color: rgba(255,255,255,.72); border-radius: 50%;
+  transition: color .18s ease, background-color .18s ease;
+}
+.footer-social a:first-child { margin-left: -10px; }
+.footer-social a:hover { color: var(--sun); background: rgba(255,255,255,.07); }
+.footer-social svg { width: 20px; height: 20px; }
+
 .site-footer h2 {
   font-family: var(--mono); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
   color: var(--sun); margin: 0 0 .9rem; font-weight: 600; line-height: 1.4;
@@ -515,11 +523,17 @@ h2 em { font-style: normal; color: var(--sun-ink); }
 .site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
 .site-footer a { color: rgba(255,255,255,.72); text-decoration: none; font-size: .89rem; overflow-wrap: anywhere; }
 .site-footer a:hover { color: var(--sun); }
+/* three items now: copyright, ABN, signature. space-between would strand the
+   ABN mid-row, so the first two group left and the signature is pushed right. */
 .footer-bottom {
-  display: flex; flex-wrap: wrap; gap: .6rem 1.5rem; justify-content: space-between;
+  display: flex; flex-wrap: wrap; gap: .6rem 1.5rem; align-items: baseline;
   padding-top: 1.3rem; font-size: .8rem; color: rgba(255,255,255,.5);
 }
+.footer-abn { font-variant-numeric: tabular-nums; }
 .footer-sig { color: var(--sun); font-weight: 700; }
+/* only push it right once the row actually fits on one line — below that the
+   three items stack and a right-aligned line looks stranded */
+@media (min-width: 720px) { .footer-sig { margin-left: auto; } }
 
 /* --------------------------------------------------------- mobile call dock */
 
