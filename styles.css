@@ -306,25 +306,6 @@ h2 em { font-style: normal; color: var(--sun-ink); }
 .card:hover h3 svg { transform: translateX(3px); color: var(--sun-ink); }
 .card p { font-size: .93rem; color: var(--ink-2); margin: 0; }
 
-/* --------------------------------------------------------- photo shots */
-
-.shots {
-  display: grid; grid-template-columns: 1fr; gap: 1.3rem;
-  margin-top: clamp(2.4rem, 4vw, 3.2rem);
-}
-@media (min-width: 820px) { .shots { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem; } }
-
-.shot { margin: 0; }
-.shot img {
-  width: 100%; aspect-ratio: 3 / 2; object-fit: cover;
-  border-radius: var(--r); box-shadow: var(--sh-2); background: var(--mist);
-}
-.shot figcaption { margin-top: .85rem; font-size: .88rem; line-height: 1.55; color: var(--ink-2); }
-.shot figcaption strong {
-  display: block; color: var(--ink); font-weight: 700;
-  font-size: .95rem; letter-spacing: -.015em; margin-bottom: .2rem;
-}
-
 /* --------------------------------------------------------- tick list */
 
 .two-col { display: grid; grid-template-columns: 1fr; gap: 2.2rem; }
@@ -363,6 +344,14 @@ h2 em { font-style: normal; color: var(--sun-ink); }
 .review-name { font-weight: 700; font-size: .92rem; letter-spacing: -.01em; }
 .review-meta { font-size: .79rem; color: var(--ink-3); }
 .review-feature .review-meta { color: rgba(255,255,255,.55); }
+/* one review standing alone as a pull quote, rather than a grid of them */
+.review-solo { max-width: 62rem; margin-inline: auto; margin-top: clamp(2.4rem, 4vw, 3.2rem); }
+.review-solo .review-feature { padding: clamp(1.8rem, 4vw, 2.6rem); }
+.review-solo blockquote { font-size: clamp(1.02rem, 1.6vw, 1.14rem); line-height: 1.62; }
+
+.review-stars { display: flex; gap: .18rem; color: var(--sun); }
+.review-stars svg { width: 17px; height: 17px; }
+
 .review-source {
   margin: 1.3rem 0 0; font-size: .82rem; color: var(--ink-3); max-width: 70ch;
   padding-top: 1rem; border-top: 1px solid var(--line);
