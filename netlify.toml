@@ -1,0 +1,31 @@
+# Static site — no build step. The HTML sits at the repository root.
+[build]
+  publish = "."
+  command = ""
+
+# Images are versioned by their size suffix but are not content-hashed, so a
+# year-long immutable cache would strand a replaced logo in browsers that had
+# already fetched it. A week is the honest ceiling without cache-busting.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Markup and the stylesheet change together and must never go stale — a cached
+# styles.css against fresh HTML is how a site ends up half-styled in the wild.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/styles.css"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
