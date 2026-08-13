@@ -426,6 +426,44 @@ h2 em { font-style: normal; color: var(--sun-ink); }
 .sources-line a { color: var(--ink-2); text-decoration-color: var(--line); overflow-wrap: anywhere; }
 .sources-line a:hover { color: var(--ink); }
 
+/* --------------------------------------------------------- message form */
+
+.message-card {
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: clamp(1.6rem, 3vw, 2.2rem); box-shadow: var(--sh-2);
+}
+.message-form { display: grid; gap: 1.15rem; margin-top: 1.6rem; }
+.form-row-2 { display: grid; grid-template-columns: 1fr; gap: 1.15rem; }
+@media (min-width: 620px) { .form-row-2 { grid-template-columns: 1fr 1fr; } }
+
+.field label { display: block; font-weight: 700; font-size: .88rem; letter-spacing: -.01em; margin-bottom: .4rem; color: var(--ink); }
+.field-optional { font-weight: 500; color: var(--ink-3); }
+.field input, .field select, .field textarea {
+  width: 100%; display: block; font-family: inherit; font-size: 1rem; color: var(--ink);
+  background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--r-sm);
+  padding: .8rem 1rem;
+}
+.field textarea { resize: vertical; min-height: 130px; line-height: 1.5; }
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none; border-color: var(--navy-700); box-shadow: 0 0 0 3px rgba(20,69,107,.14);
+}
+.field-hint { margin: .4rem 0 0; font-size: .82rem; color: var(--ink-3); }
+.message-form .btn { justify-self: start; margin-top: .3rem; }
+
+/* honeypot — hidden from sighted users and kept out of the tab order, but
+   still present in the DOM for the bots Netlify's spam filter is catching */
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.link-alt {
+  display: inline-block; margin-top: 1rem;
+  color: rgba(255,255,255,.86); font-size: .92rem; font-weight: 600;
+  text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,.4);
+}
+.link-alt:hover { color: #fff; text-decoration-color: var(--sun); }
+
+.final-cta-note a { color: var(--sun); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+.final-cta-note a:hover { color: #FFC33F; }
+
 /* --------------------------------------------------------- contact */
 
 .contact-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -548,10 +586,14 @@ h2 em { font-style: normal; color: var(--sun-ink); }
 @media (max-width: 939px) {
   .header-cta,
   .hero .btn-sun,
-  .final-cta .btn-sun { display: none; }
+  /* only the phone-call buttons duplicate the dock — a final-cta button
+     that leads somewhere else (e.g. the contact page's message form) is
+     not a duplicate and stays visible */
+  .final-cta a[href^="tel:"].btn-sun { display: none; }
   /* the closing section was sized around a button that is no longer there,
-     leaving 77px of empty navy under the last line */
-  .final-cta { padding-bottom: clamp(1.8rem, 4vw, 2.4rem); }
+     leaving 77px of empty navy under the last line — only applies when
+     that button is in fact hidden (no non-tel final-cta button present) */
+  .final-cta:not(:has(a.btn-sun:not([href^="tel:"]))) { padding-bottom: clamp(1.8rem, 4vw, 2.4rem); }
   /* keep the dock from covering the end of the page — 5.5rem left only 13px
      between the last footer line and the dock */
   .site-footer { padding-bottom: 6.5rem; }
