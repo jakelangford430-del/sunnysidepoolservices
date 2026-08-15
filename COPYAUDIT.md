@@ -1,7 +1,7 @@
 # Sunnyside Pool Services copy audit
 
 Original audit: 6 August 2026
-Last updated: 12 August 2026
+Last updated: 13 August 2026
 
 ## Evidence standard
 
@@ -40,7 +40,7 @@ Provided for the rebuild, not independently confirmed on a public source:
 - Equipment repair and assessment services
 - Fibreglass renovation services
 - Testing technology used to read water chemistry, filtration, circulation and equipment condition
-- Phone-first enquiries; no online booking or enquiry form on the rebuilt site
+- Phone-first enquiries. An online enquiry form was added to the Contact page on 13 August 2026 (see "Changes made 13 August 2026" below); phone and email remain the two channels named directly in copy
 - One-off jobs and one-off cleans offered alongside regular servicing
 - Attendance not required; pool-area access can be arranged by lock box or similar
 - Invoiced after the work, payable within 7 days
@@ -64,6 +64,11 @@ Provided for the rebuild, not independently confirmed on a public source:
 - Corrected pH and outdoor stabilised-pool chlorine guidance to HealthyWA ranges.
 - Removed `proven`, `expert`, `specialist` and `trusted` claims in favour of specific, checkable statements.
 - Removed the Alice C. quote — sourced only to the old website, superseded by the dated Google reviews.
+
+## Changes made 13 August 2026
+
+- **Contact-page enquiry form added, superseding the earlier "no enquiry form" decision.** The 6/12 August entries recorded phone-first enquiries with no form, supplied directly by Sunnyside. The site owner has now asked for one, so a Netlify Forms-powered message form (name, email, phone, suburb, topic, message) was added to the Contact page, submitting to a new `thanks.html` confirmation page. No new factual claims were introduced — the form copy states only that Daniel receives and replies to messages himself, consistent with the owner-operated framing already used elsewhere on the site. No response-time promise is made, since none has been confirmed.
+- **Contact-page phone repetition reduced.** Before this change, the Contact page carried three separate large "Call Daniel" buttons in the content flow (hero, phone card, closing section) in addition to the header pill and mobile call dock. The closing section's button now points to the new message form instead of duplicating the hero button, with the phone number kept as a plain-text link in the same section. The hero button gained a small secondary link to the form. Phone remains the first-listed, fastest-described channel in the "How to reach us" section.
 
 ## Changes made 8 August 2026
 
