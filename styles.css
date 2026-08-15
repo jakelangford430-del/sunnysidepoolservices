@@ -586,6 +586,12 @@ h2 em { font-style: normal; color: var(--sun-ink); }
 @media (max-width: 939px) {
   .header-cta,
   .hero .btn-sun,
+  /* Contact leads with .section-navy rather than .hero, so it was missed when
+     this rule was written and its intro button sat on screen alongside the
+     fixed dock — two call actions, which is exactly what the rule exists to
+     prevent. Scoped to a direct child of the intro container so the phone and
+     email cards further down the page keep their links. */
+  .section-navy > .container > .btn-sun,
   /* only the phone-call buttons duplicate the dock — a final-cta button
      that leads somewhere else (e.g. the contact page's message form) is
      not a duplicate and stays visible */
