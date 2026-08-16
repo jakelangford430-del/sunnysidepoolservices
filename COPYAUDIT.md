@@ -1,7 +1,7 @@
 # Sunnyside Pool Services copy audit
 
 Original audit: 6 August 2026
-Last updated: 13 August 2026
+Last updated: 17 August 2026
 
 ## Evidence standard
 
@@ -64,6 +64,13 @@ Provided for the rebuild, not independently confirmed on a public source:
 - Corrected pH and outdoor stabilised-pool chlorine guidance to HealthyWA ranges.
 - Removed `proven`, `expert`, `specialist` and `trusted` claims in favour of specific, checkable statements.
 - Removed the Alice C. quote — sourced only to the old website, superseded by the dated Google reviews.
+
+## Changes made 17 August 2026
+
+- **Services-page copy refreshed without adding new factual claims.** The hero lede, service cards, renovation section, process copy and final CTA were tightened around the already evidenced service lines: regular servicing, green pool recovery, water testing, equipment repair/assessment, one-off cleans and renovations.
+- **Guarantee-like language softened.** Phrases such as "repairs done properly the first time", "fix it the right way" and "we fix it" were replaced with practical descriptions of inspection, diagnosis, agreed work and next steps.
+- **SEO metadata aligned with the visible copy.** The services page title, meta description and Open Graph text now include regular cleaning, green pool recovery, equipment repairs, one-off cleans and renovations without expanding the service area.
+- **David hug review left unchanged.** Its provenance and truncation caveat are already recorded in the 8 August entry below.
 
 ## Changes made 13 August 2026
 
