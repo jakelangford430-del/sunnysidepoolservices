@@ -115,14 +115,15 @@ a { color: var(--navy-700); }
 .nav-links a[aria-current="page"] { color: var(--sun); border-bottom-color: var(--sun); }
 
 /* .header-cta.btn-sm, not .header-cta alone — .btn-sm's own padding rule sits
-   later in the cascade and would otherwise win at equal specificity. */
+   later in the cascade and would otherwise win at equal specificity.
+   Sized and shaped to match .mobile-menu > summary (the "Menu" pill) it
+   sits beside, rather than a circle that reads as a different control. */
 .header-cta.btn-sm {
-  margin-left: auto; flex: none; padding: 0;
-  width: 3.6rem; height: 3.6rem; border-radius: 50%;
-  font-size: .72rem; letter-spacing: -.01em; gap: 0;
+  margin-left: auto; flex: none;
+  padding: .55rem 1.1rem; border-radius: 999px;
+  font-size: .88rem; font-weight: 600; letter-spacing: -.01em; gap: 0;
 }
-@media (min-width: 420px) { .header-cta.btn-sm { width: 3.9rem; height: 3.9rem; font-size: .76rem; } }
-@media (min-width: 940px) { .header-cta.btn-sm { margin-left: 0; width: 4.1rem; height: 4.1rem; font-size: .8rem; } }
+@media (min-width: 940px) { .header-cta.btn-sm { margin-left: 0; } }
 
 /* mobile menu — native details, no JS */
 .mobile-menu { margin-left: auto; position: relative; }
