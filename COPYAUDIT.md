@@ -65,6 +65,13 @@ Provided for the rebuild, not independently confirmed on a public source:
 - Removed `proven`, `expert`, `specialist` and `trusted` claims in favour of specific, checkable statements.
 - Removed the Alice C. quote — sourced only to the old website, superseded by the dated Google reviews.
 
+## Changes made 17 August 2026 (2)
+
+- **`regular-pool-maintenance.html` proof-bar replaced.** The generic "5.0 rated / Since 2018 / 60+" stat bar was swapped for three items specific to this page, confirmed directly by Daniel:
+  - **60+ regular pool cleans per month for ongoing clients.** This reinstates a monthly framing for the "60+" figure. Note this reverses the 8 August 2026 correction below, which removed "regular cleans every month" because that framing wasn't confirmed at the time; Daniel has now confirmed the monthly figure is accurate, so it is restored here. The site-wide "60+" wording elsewhere (proof bars, footer signature) has deliberately been left as "regular pool cleans for ongoing clients", without "per month", since that reinstatement was scoped to this page only — flag for a follow-up decision if the monthly framing should be applied site-wide.
+  - **On-site advice.** Knowledge and advice is shared with the client during every visit.
+  - **Flexible access.** Clients are invited to speak to Sunnyside about access arrangements; scheduling may work on an area/route basis, with clients told when the team will be in their area.
+
 ## Changes made 17 August 2026
 
 - **New `regular-pool-maintenance.html` page added**, expanding on the previously bare "Scheduled pool servicing" scope. Content supplied directly by Daniel and added to the "Supplied directly by Sunnyside" evidence tier below:
