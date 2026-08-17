@@ -65,6 +65,15 @@ Provided for the rebuild, not independently confirmed on a public source:
 - Removed `proven`, `expert`, `specialist` and `trusted` claims in favour of specific, checkable statements.
 - Removed the Alice C. quote — sourced only to the old website, superseded by the dated Google reviews.
 
+## Changes made 17 August 2026
+
+- **New `regular-pool-maintenance.html` page added**, expanding on the previously bare "Scheduled pool servicing" scope. Content supplied directly by Daniel and added to the "Supplied directly by Sunnyside" evidence tier below:
+  - Servicing is offered as one-off, bi-monthly or monthly pool servicing.
+  - Each visit covers: removal of leaves/debris/surface contaminants; brushing of walls, steps, tile line and waterline; vacuuming as required; emptying of skimmer and pump baskets; inspection and tidy-up of the equipment area; checks of the pump, filter, visible pipework, valves and chlorinator/sanitising system; filter pressure recorded before and after every service, with backwashing or filter cleaning carried out only when needed; professional water testing and chemical balancing; a chemistry report emailed after the service; and service notes plus relevant before-and-after photos provided to the client.
+  - Note: "before-and-after photos" here means per-visit documentation supplied to that client, not the site's own photography gallery — the gallery module remains unbuilt (see "Still outstanding" below), and no such photos are shown on the website itself.
+  - CTA copy "Get a Free Pool Health Check" and "Book Your First Service" route to the existing phone (`tel:+61437283972`) and enquiry form (`contact.html#message-form`) channels respectively; no separate booking system or free-check offer mechanism exists beyond those two contact channels.
+- Nav, footer and `sitemap.xml` updated across all pages to link to the new page.
+
 ## Changes made 13 August 2026
 
 - **Contact-page enquiry form added, superseding the earlier "no enquiry form" decision.** The 6/12 August entries recorded phone-first enquiries with no form, supplied directly by Sunnyside. The site owner has now asked for one, so a Netlify Forms-powered message form (name, email, phone, suburb, topic, message) was added to the Contact page, submitting to a new `thanks.html` confirmation page. No new factual claims were introduced — the form copy states only that Daniel receives and replies to messages himself, consistent with the owner-operated framing already used elsewhere on the site. No response-time promise is made, since none has been confirmed.
