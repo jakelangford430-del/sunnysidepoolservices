@@ -65,6 +65,11 @@ Provided for the rebuild, not independently confirmed on a public source:
 - Removed `proven`, `expert`, `specialist` and `trusted` claims in favour of specific, checkable statements.
 - Removed the Alice C. quote — sourced only to the old website, superseded by the dated Google reviews.
 
+## Changes made 17 August 2026 (3)
+
+- **Mobile call dock removed sitewide.** The fixed yellow "Call or SMS Sunnyside" bar that sat at the bottom of the screen on mobile is gone from every page. In its place, the header's call button (previously hidden on mobile to avoid duplicating the dock) is now always visible, restyled as a circular "Call us" button next to the mobile menu control — the header is `position: sticky`, so it stays on screen through the scroll the same way the dock did. No facts changed, layout/UI only.
+- **Footer phone number replaced with an icon.** The plain-text "0437 283 972" link in the footer brand column is gone; a phone-emoji icon now sits at the front of the footer's social-icon row (before Instagram and Facebook), linking to the same `tel:` number. Same number, same destination, different presentation.
+
 ## Changes made 17 August 2026 (2)
 
 - **"Areas we service" reframed as "Our regular service areas".** The owner's intent for the hub and location pages is primarily SEO — appearing in searches like "pool cleaning Applecross" — rather than implying the 44 listed suburbs are the only places Sunnyside will go. Hero, headings, footer links, the contact-page reference, and the `BreadcrumbList` schema name across all 44 location pages now read "Our regular service areas", and the hub's intro copy states the run covers those suburbs weekly while Sunnyside remains happy to service anywhere in the Perth metro area.
