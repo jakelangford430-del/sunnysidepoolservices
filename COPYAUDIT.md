@@ -1,7 +1,7 @@
 # Sunnyside Pool Services copy audit
 
 Original audit: 6 August 2026
-Last updated: 13 August 2026
+Last updated: 17 August 2026
 
 ## Evidence standard
 
@@ -64,6 +64,26 @@ Provided for the rebuild, not independently confirmed on a public source:
 - Corrected pH and outdoor stabilised-pool chlorine guidance to HealthyWA ranges.
 - Removed `proven`, `expert`, `specialist` and `trusted` claims in favour of specific, checkable statements.
 - Removed the Alice C. quote — sourced only to the old website, superseded by the dated Google reviews.
+
+## Changes made 17 August 2026 (3)
+
+- **Mobile call dock removed sitewide.** The fixed yellow "Call or SMS Sunnyside" bar that sat at the bottom of the screen on mobile is gone from every page. In its place, the header's call button (previously hidden on mobile to avoid duplicating the dock) is now always visible, restyled as a circular "Call us" button next to the mobile menu control — the header is `position: sticky`, so it stays on screen through the scroll the same way the dock did. No facts changed, layout/UI only.
+- **Footer phone number replaced with an icon.** The plain-text "0437 283 972" link in the footer brand column is gone; a phone-emoji icon now sits at the front of the footer's social-icon row (before Instagram and Facebook), linking to the same `tel:` number. Same number, same destination, different presentation.
+
+## Changes made 17 August 2026 (2)
+
+- **"Areas we service" reframed as "Our regular service areas".** The owner's intent for the hub and location pages is primarily SEO — appearing in searches like "pool cleaning Applecross" — rather than implying the 44 listed suburbs are the only places Sunnyside will go. Hero, headings, footer links, the contact-page reference, and the `BreadcrumbList` schema name across all 44 location pages now read "Our regular service areas", and the hub's intro copy states the run covers those suburbs weekly while Sunnyside remains happy to service anywhere in the Perth metro area.
+- **"Nearby areas" links now geographic, not alphabetical.** Each location page's "Areas near {suburb} we also service" list previously showed the next few suburbs alphabetically. It's now computed from approximate suburb-centre coordinates (public geographic knowledge, not survey-grade) via straight-line distance, aiming for suburbs within roughly 10–15km and falling back to the nearest few if a suburb has fewer neighbours in range. This is a navigational aid, not a claim requiring the evidence standard applied to marketing copy.
+- **Suburb-page closing CTA changed.** "Need a hand with your pool in {suburb}?" is now "Want us to let you know when we're in {suburb}?", pointing at the existing "take your details and add you to our database" mechanism already used on the Contact page rather than a new feature. The supporting line was rewritten to "Or leave your details · Servicing Perth pools since 2018, fully insured." — same verified facts (since 2018, fully insured), fresher wording. This change applies only to the 44 location pages; the Home/Services/Contact final-CTA sections, which don't reference a suburb, were left as they were.
+
+## Changes made 17 August 2026 (1)
+
+- **Service area expanded from 6 named cities to 44 suburbs, supplied directly by the owner.** The owner provided a list of 38 additional suburbs and confirmed Sunnyside currently services all of them, superseding the 8 August decision to narrow visible copy and `areaServed` to only the six areas shown on the Google Business Profile map. The Google profile itself has not been updated to show this wider polygon — this expansion rests on the owner's direct statement, not on independent verification against the profile or another public source.
+- **Location pages added.** A `locations.html` hub page and 44 individual suburb pages (`locations/<suburb>.html`) were built, one per serviced suburb (the original 6 plus the 38 supplied). Per the owner's direction, these are deliberately templated rather than carrying suburb-specific detail — each page repeats the same service list, trust points and Google rating, with only the suburb name and internal links varying. No suburb-specific claims (bore water, local landmarks, streets worked on) have been invented; none should be added without the owner supplying the specific fact.
+- **`areaServed` schema widened sitewide** on `index.html`, `services.html`, `contact.html`, `pool-advice.html`, `locations.html` and every location page to list all 44 suburbs, replacing the 6-city list.
+- **Contact page's static 6-suburb pill list replaced** with a link to the new `locations.html` hub, so the visible area list doesn't need separate maintenance as suburbs are added or removed.
+- **Nav and footer updated** across all pages to add an "Areas" link to `locations.html`.
+- Sitemap updated with the hub page and all 44 location page URLs.
 
 ## Changes made 13 August 2026
 

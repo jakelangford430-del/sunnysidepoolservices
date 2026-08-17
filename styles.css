@@ -114,8 +114,16 @@ a { color: var(--navy-700); }
 .nav-links a:hover { color: #fff; }
 .nav-links a[aria-current="page"] { color: var(--sun); border-bottom-color: var(--sun); }
 
-.header-cta { margin-left: auto; }
-@media (min-width: 940px) { .header-cta { margin-left: 0; } }
+/* .header-cta.btn-sm, not .header-cta alone — .btn-sm's own padding rule sits
+   later in the cascade and would otherwise win at equal specificity.
+   Sized and shaped to match .mobile-menu > summary (the "Menu" pill) it
+   sits beside, rather than a circle that reads as a different control. */
+.header-cta.btn-sm {
+  margin-left: auto; flex: none;
+  padding: .55rem 1.1rem; border-radius: 999px;
+  font-size: .88rem; font-weight: 600; letter-spacing: -.01em; gap: 0;
+}
+@media (min-width: 940px) { .header-cta.btn-sm { margin-left: 0; } }
 
 /* mobile menu — native details, no JS */
 .mobile-menu { margin-left: auto; position: relative; }
@@ -489,8 +497,20 @@ h2 em { font-style: normal; color: var(--sun-ink); }
 .area-list li {
   font-size: .88rem; font-weight: 600; color: var(--navy-900);
   background: var(--paper); border: 1px solid var(--line);
-  border-radius: 999px; padding: .42rem .9rem;
+  border-radius: 999px; padding: 0; overflow: hidden;
 }
+.area-list li a {
+  display: block; padding: .42rem .9rem; color: inherit; text-decoration: none;
+}
+.area-list li a:hover, .area-list li a:focus-visible { background: var(--mist); }
+
+.location-groups {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.6rem 2rem;
+}
+.location-group h3 {
+  font-size: 1rem; color: var(--sun-ink); margin: 0 0 .6rem;
+}
+.location-group .area-list { margin-top: 0; }
 
 .prep {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;
@@ -527,16 +547,12 @@ h2 em { font-style: normal; color: var(--sun-ink); }
 .footer-brand picture { display: block; }
 .footer-brand img { height: 46px; width: auto; margin-bottom: 1rem; }
 .footer-brand p { font-size: .89rem; max-width: 32ch; margin: 0 0 1rem; }
-.footer-tel {
-  display: inline-block; color: var(--sun); font-weight: 800;
-  font-size: 1.15rem; letter-spacing: -.02em; text-decoration: none;
-}
 /* 44px tap targets, so the icons stay usable on a phone even though the glyph
-   inside is 20px — the footer sits right above the fixed call dock. */
+   inside is 20px. */
 .footer-social { display: flex; gap: .35rem; margin-top: 1.1rem; }
 .footer-social a {
   display: grid; place-items: center; width: 44px; height: 44px; margin-left: -10px;
-  color: rgba(255,255,255,.72); border-radius: 50%;
+  color: rgba(255,255,255,.72); border-radius: 50%; font-size: 1.15rem; line-height: 1;
   transition: color .18s ease, background-color .18s ease;
 }
 .footer-social a:first-child { margin-left: -10px; }
@@ -562,45 +578,25 @@ h2 em { font-style: normal; color: var(--sun-ink); }
    three items stack and a right-aligned line looks stranded */
 @media (min-width: 720px) { .footer-sig { margin-left: auto; } }
 
-/* --------------------------------------------------------- mobile call dock */
-
-.call-dock {
-  position: fixed; inset: auto 0 0 0; z-index: 90;
-  padding: .6rem .8rem calc(.6rem + env(safe-area-inset-bottom));
-  background: rgba(255,255,255,.86);
-  backdrop-filter: blur(18px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-  border-top: 1px solid rgba(11,35,56,.12);
-}
-.call-dock .btn { width: 100%; padding-block: .85rem; }
-@media (min-width: 940px) { .call-dock { display: none; } }
-
-/* One call action on mobile, and it is the dock.
-   The dock is position:fixed, so any other call button is on screen at the
-   same time rather than merely further down the page — the header pill, the
-   hero button and the closing button all sat in the first viewport together,
-   three identical yellow buttons. Below 940px the dock is the only one; it
-   never leaves the screen, so nothing is lost by hiding the rest. The header
-   pill also wrapped "0437 283 972" onto two lines at 390px and crowded the
-   logo, which is the cramped top-right corner. */
+/* One call action on mobile, and it is the circular header button.
+   The header is position:sticky, so it stays on screen through the whole
+   scroll — any other call button is on screen at the same time rather than
+   merely further down the page, so the hero button and the closing button
+   would sit in the first viewport alongside it, duplicate yellow buttons. */
 @media (max-width: 939px) {
-  .header-cta,
   .hero .btn-sun,
   /* Contact leads with .section-navy rather than .hero, so it was missed when
      this rule was written and its intro button sat on screen alongside the
-     fixed dock — two call actions, which is exactly what the rule exists to
-     prevent. Scoped to a direct child of the intro container so the phone and
-     email cards further down the page keep their links. */
+     header button — two call actions, which is exactly what the rule exists
+     to prevent. Scoped to a direct child of the intro container so the phone
+     and email cards further down the page keep their links. */
   .section-navy > .container > .btn-sun,
-  /* only the phone-call buttons duplicate the dock — a final-cta button
-     that leads somewhere else (e.g. the contact page's message form) is
-     not a duplicate and stays visible */
+  /* only the phone-call buttons duplicate the header button — a final-cta
+     button that leads somewhere else (e.g. the contact page's message form)
+     is not a duplicate and stays visible */
   .final-cta a[href^="tel:"].btn-sun { display: none; }
   /* the closing section was sized around a button that is no longer there,
      leaving 77px of empty navy under the last line — only applies when
      that button is in fact hidden (no non-tel final-cta button present) */
   .final-cta:not(:has(a.btn-sun:not([href^="tel:"]))) { padding-bottom: clamp(1.8rem, 4vw, 2.4rem); }
-  /* keep the dock from covering the end of the page — 5.5rem left only 13px
-     between the last footer line and the dock */
-  .site-footer { padding-bottom: 6.5rem; }
 }
