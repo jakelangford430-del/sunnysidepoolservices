@@ -1,7 +1,7 @@
 # Sunnyside Pool Services copy audit
 
 Original audit: 6 August 2026
-Last updated: 17 August 2026
+Last updated: 18 August 2026
 
 ## Evidence standard
 
@@ -64,6 +64,13 @@ Provided for the rebuild, not independently confirmed on a public source:
 - Corrected pH and outdoor stabilised-pool chlorine guidance to HealthyWA ranges.
 - Removed `proven`, `expert`, `specialist` and `trusted` claims in favour of specific, checkable statements.
 - Removed the Alice C. quote — sourced only to the old website, superseded by the dated Google reviews.
+
+## Changes made 18 August 2026
+
+- **Nav label "Knowledge hub" shortened to "Advice"**, matching the existing `pool-advice.html` URL and page title so the nav catches up to wording already used elsewhere on the site. No new terminology introduced.
+- **Footer redesigned to a single minimal row**, replacing the three-column footer (brand/tagline, an "Explore" link list, an email-only "Get in touch" column, and a bottom row with copyright, ABN and a marketing signature). The new footer is: logo + social icons (phone, Instagram, Facebook) on the left, a single "All pages →" link on the right, and copyright + ABN on a small second line. Chosen at the owner's direction to reduce footer clutter and push the full link list onto a dedicated page instead, for search-console/crawlability reasons.
+- **New page: `all-pages.html`.** A single flat page — no design flourish — listing the five main pages, then all 44 service-area pages grouped A–Z. It exists so every URL on the site is reachable within one click from every other page (via the footer), which gives Google Search Console and any crawler a direct, un-nested path to every location page regardless of how deep `locations.html`'s own grouping sits. Added to `sitemap.xml`.
+- **`thanks.html` (the Netlify form confirmation page) brought up to date.** It had been missed in the 17 August changes — still had the old three-column footer, the plain-text phone number, the removed mobile call-dock, and no Areas nav link. All four are now consistent with the rest of the site.
 
 ## Changes made 17 August 2026 (3)
 
