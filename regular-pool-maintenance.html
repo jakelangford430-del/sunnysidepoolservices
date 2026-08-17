@@ -25,6 +25,17 @@
     <meta name="theme-color" content="#0B2338">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="styles.css">
+    <style>
+      /* This page has no fixed call dock, so it doesn't need the bottom
+         padding every other page reserves in styles.css to keep the dock
+         clear of the footer — and the hero's own call button, normally
+         hidden on mobile to avoid duplicating the dock, needs to stay
+         visible here since it's the only call action left. */
+      @media (max-width: 939px) {
+        .site-footer { padding-bottom: 1.5rem; }
+        .section-navy > .container > .btn-sun { display: inline-flex; }
+      }
+    </style>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -187,7 +198,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
             Book Your First Service
           </a>
-          <p class="final-cta-note">Or call / SMS Sunnyside direct on <a href="tel:+61437283972">0437 283 972</a> · Eight years of pool cleaning, equipment and renovation work across Perth.</p>
+          <p class="final-cta-note">Eight years of pool cleaning, equipment and renovation work across Perth.</p>
         </div>
       </section>
 
@@ -233,12 +244,5 @@
         </div>
       </div>
     </footer>
-
-    <div class="call-dock">
-      <a class="btn btn-sun" href="tel:+61437283972">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.4-.4 1-.5 1.5-.4 1.6.6 3.4.8 5.1.8.8 0 1.5.7 1.5 1.5V21c0 .8-.7 1.5-1.5 1.5C10.3 22.5 1.5 13.7 1.5 3.5 1.5 2.7 2.2 2 3 2h3.4c.8 0 1.5.7 1.5 1.5 0 1.7.3 3.4.8 5.1.1.5 0 1.1-.4 1.5l-2.7 2.2z"/></svg>
-        Call or SMS Sunnyside
-      </a>
-    </div>
   </body>
 </html>
