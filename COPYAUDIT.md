@@ -1,7 +1,7 @@
 # Sunnyside Pool Services copy audit
 
 Original audit: 6 August 2026
-Last updated: 13 August 2026
+Last updated: 17 August 2026
 
 ## Evidence standard
 
@@ -64,6 +64,15 @@ Provided for the rebuild, not independently confirmed on a public source:
 - Corrected pH and outdoor stabilised-pool chlorine guidance to HealthyWA ranges.
 - Removed `proven`, `expert`, `specialist` and `trusted` claims in favour of specific, checkable statements.
 - Removed the Alice C. quote — sourced only to the old website, superseded by the dated Google reviews.
+
+## Changes made 17 August 2026
+
+- **Service area expanded from 6 named cities to 44 suburbs, supplied directly by the owner.** The owner provided a list of 38 additional suburbs and confirmed Sunnyside currently services all of them, superseding the 8 August decision to narrow visible copy and `areaServed` to only the six areas shown on the Google Business Profile map. The Google profile itself has not been updated to show this wider polygon — this expansion rests on the owner's direct statement, not on independent verification against the profile or another public source.
+- **Location pages added.** A `locations.html` hub page and 44 individual suburb pages (`locations/<suburb>.html`) were built, one per serviced suburb (the original 6 plus the 38 supplied). Per the owner's direction, these are deliberately templated rather than carrying suburb-specific detail — each page repeats the same service list, trust points and Google rating, with only the suburb name and internal links varying. No suburb-specific claims (bore water, local landmarks, streets worked on) have been invented; none should be added without the owner supplying the specific fact.
+- **`areaServed` schema widened sitewide** on `index.html`, `services.html`, `contact.html`, `pool-advice.html`, `locations.html` and every location page to list all 44 suburbs, replacing the 6-city list.
+- **Contact page's static 6-suburb pill list replaced** with a link to the new `locations.html` hub, so the visible area list doesn't need separate maintenance as suburbs are added or removed.
+- **Nav and footer updated** across all pages to add an "Areas" link to `locations.html`.
+- Sitemap updated with the hub page and all 44 location page URLs.
 
 ## Changes made 13 August 2026
 
