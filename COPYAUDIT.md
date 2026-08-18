@@ -1,7 +1,7 @@
 # Sunnyside Pool Services copy audit
 
 Original audit: 6 August 2026
-Last updated: 18 August 2026
+Last updated: 18 August 2026 (2)
 
 ## Evidence standard
 
@@ -65,7 +65,15 @@ Provided for the rebuild, not independently confirmed on a public source:
 - Removed `proven`, `expert`, `specialist` and `trusted` claims in favour of specific, checkable statements.
 - Removed the Alice C. quote — sourced only to the old website, superseded by the dated Google reviews.
 
-## Changes made 18 August 2026
+## Changes made 18 August 2026 (2)
+
+- **Logo replaced with owner-supplied vector artwork, approved 18 August 2026.** The owner supplied a new master (PNG preview + a genuine vector PDF, unlike the earlier flattened `sunnyside-logo-web.png`) that fixes the uneven letter-heights in the "Sunny" cursive noted earlier the same day. Extracted the vector at high resolution, removed its baked-in white background programmatically (connected-component analysis to key out the background rectangle without disturbing the artwork's own anti-aliased edges), and produced two exports:
+  - `assets/sunnyside-logo.png` — the navy-on-transparent version, used only in the `LocalBusiness` schema's `logo` field (not visible on-page).
+  - `assets/sunnyside-logo-reversed.png` / `.webp` — a white-on-navy version for the header and footer, built the same way as the previous reversed logo: sun and wave keep their real colours, the wordmark and "POOL SERVICES" are recoloured solid white (again via connected-component masking, so the sun/wave colours were untouched).
+  - Updated every page's `width`/`height` attributes on the logo `<img>` (480×156 → 480×244) to match the new artwork's actual aspect ratio, since the new file is proportioned differently from the old one.
+  - Old logo files are not kept in the repo as a backup; git history covers rollback if ever needed.
+
+## Changes made 18 August 2026 (1)
 
 - **Nav label "Knowledge hub" shortened to "Advice"**, matching the existing `pool-advice.html` URL and page title so the nav catches up to wording already used elsewhere on the site. No new terminology introduced.
 - **Footer redesigned to a single minimal row**, replacing the three-column footer (brand/tagline, an "Explore" link list, an email-only "Get in touch" column, and a bottom row with copyright, ABN and a marketing signature). The new footer is: logo + social icons (phone, Instagram, Facebook) on the left, a single "All pages →" link on the right, and copyright + ABN on a small second line. Chosen at the owner's direction to reduce footer clutter and push the full link list onto a dedicated page instead, for search-console/crawlability reasons.
