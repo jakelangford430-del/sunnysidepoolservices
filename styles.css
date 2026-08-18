@@ -103,7 +103,7 @@ a { color: var(--navy-700); }
 }
 .brand { display: block; flex: none; line-height: 0; }
 .brand picture { display: block; }
-.brand img { height: 42px; width: auto; }
+.brand img { height: 50px; width: auto; }
 
 .nav-links { display: none; gap: 1.6rem; margin-left: auto; }
 .nav-links a {
@@ -549,7 +549,7 @@ h2 em { font-style: normal; color: var(--sun-ink); }
 }
 .footer-brand { display: flex; align-items: center; gap: .3rem; flex-wrap: wrap; }
 .footer-brand picture { display: block; }
-.footer-brand img { height: 40px; width: auto; }
+.footer-brand img { height: 46px; width: auto; }
 /* 44px tap targets, so the icons stay usable on a phone even though the glyph
    inside is 20px. */
 .footer-social { display: flex; gap: .1rem; }
