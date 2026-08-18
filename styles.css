@@ -123,7 +123,11 @@ a { color: var(--navy-700); }
   padding: .55rem 1.1rem; border-radius: 999px;
   font-size: .88rem; font-weight: 600; letter-spacing: -.01em; gap: 0;
 }
-@media (min-width: 940px) { .header-cta.btn-sm { margin-left: 0; } }
+/* Wider on desktop, where it sits alone at the end of a roomy nav row rather
+   than tight against a "Menu" pill — the mobile size stays tight for space. */
+@media (min-width: 940px) {
+  .header-cta.btn-sm { margin-left: 0; padding: .8rem 2.3rem; font-size: .95rem; }
+}
 
 /* mobile menu — native details, no JS */
 .mobile-menu { margin-left: auto; position: relative; }
