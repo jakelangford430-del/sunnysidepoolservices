@@ -1,7 +1,7 @@
 # Sunnyside Pool Services copy audit
 
 Original audit: 6 August 2026
-Last updated: 13 August 2026
+Last updated: 18 August 2026 (2)
 
 ## Evidence standard
 
@@ -65,21 +65,56 @@ Provided for the rebuild, not independently confirmed on a public source:
 - Removed `proven`, `expert`, `specialist` and `trusted` claims in favour of specific, checkable statements.
 - Removed the Alice C. quote — sourced only to the old website, superseded by the dated Google reviews.
 
+## Changes made 18 August 2026 (2)
+
+- **Logo replaced with owner-supplied vector artwork, approved 18 August 2026.** The owner supplied a new master (PNG preview + a genuine vector PDF, unlike the earlier flattened `sunnyside-logo-web.png`) that fixes the uneven letter-heights in the "Sunny" cursive noted earlier the same day. Extracted the vector at high resolution, removed its baked-in white background programmatically (connected-component analysis to key out the background rectangle without disturbing the artwork's own anti-aliased edges), and produced two exports:
+  - `assets/sunnyside-logo.png` — the navy-on-transparent version, used only in the `LocalBusiness` schema's `logo` field (not visible on-page).
+  - `assets/sunnyside-logo-reversed.png` / `.webp` — a white-on-navy version for the header and footer, built the same way as the previous reversed logo: sun and wave keep their real colours, the wordmark and "POOL SERVICES" are recoloured solid white (again via connected-component masking, so the sun/wave colours were untouched).
+  - Updated every page's `width`/`height` attributes on the logo `<img>` (480×156 → 480×244) to match the new artwork's actual aspect ratio, since the new file is proportioned differently from the old one.
+  - Old logo files are not kept in the repo as a backup; git history covers rollback if ever needed.
+
+## Changes made 18 August 2026 (1)
+
+- **Nav label "Knowledge hub" shortened to "Advice"**, matching the existing `pool-advice.html` URL and page title so the nav catches up to wording already used elsewhere on the site. No new terminology introduced.
+- **Footer redesigned to a single minimal row**, replacing the three-column footer (brand/tagline, an "Explore" link list, an email-only "Get in touch" column, and a bottom row with copyright, ABN and a marketing signature). The new footer is: logo + social icons (phone, Instagram, Facebook) on the left, a single "All pages →" link on the right, and copyright + ABN on a small second line. Chosen at the owner's direction to reduce footer clutter and push the full link list onto a dedicated page instead, for search-console/crawlability reasons.
+- **New page: `all-pages.html`.** A single flat page — no design flourish — listing the five main pages, then all 44 service-area pages grouped A–Z. It exists so every URL on the site is reachable within one click from every other page (via the footer), which gives Google Search Console and any crawler a direct, un-nested path to every location page regardless of how deep `locations.html`'s own grouping sits. Added to `sitemap.xml`.
+- **`thanks.html` (the Netlify form confirmation page) brought up to date.** It had been missed in the 17 August changes — still had the old three-column footer, the plain-text phone number, the removed mobile call-dock, and no Areas nav link. All four are now consistent with the rest of the site.
+
+## Changes made 17 August 2026 (3)
+
+- **Mobile call dock removed sitewide.** The fixed yellow "Call or SMS Sunnyside" bar that sat at the bottom of the screen on mobile is gone from every page. In its place, the header's call button (previously hidden on mobile to avoid duplicating the dock) is now always visible, restyled as a circular "Call us" button next to the mobile menu control — the header is `position: sticky`, so it stays on screen through the scroll the same way the dock did. No facts changed, layout/UI only.
+- **Footer phone number replaced with an icon.** The plain-text "0437 283 972" link in the footer brand column is gone; a phone-emoji icon now sits at the front of the footer's social-icon row (before Instagram and Facebook), linking to the same `tel:` number. Same number, same destination, different presentation.
+
 ## Changes made 17 August 2026 (2)
+
+- **"Areas we service" reframed as "Our regular service areas".** The owner's intent for the hub and location pages is primarily SEO — appearing in searches like "pool cleaning Applecross" — rather than implying the 44 listed suburbs are the only places Sunnyside will go. Hero, headings, footer links, the contact-page reference, and the `BreadcrumbList` schema name across all 44 location pages now read "Our regular service areas", and the hub's intro copy states the run covers those suburbs weekly while Sunnyside remains happy to service anywhere in the Perth metro area.
+- **"Nearby areas" links now geographic, not alphabetical.** Each location page's "Areas near {suburb} we also service" list previously showed the next few suburbs alphabetically. It's now computed from approximate suburb-centre coordinates (public geographic knowledge, not survey-grade) via straight-line distance, aiming for suburbs within roughly 10–15km and falling back to the nearest few if a suburb has fewer neighbours in range. This is a navigational aid, not a claim requiring the evidence standard applied to marketing copy.
+- **Suburb-page closing CTA changed.** "Need a hand with your pool in {suburb}?" is now "Want us to let you know when we're in {suburb}?", pointing at the existing "take your details and add you to our database" mechanism already used on the Contact page rather than a new feature. The supporting line was rewritten to "Or leave your details · Servicing Perth pools since 2018, fully insured." — same verified facts (since 2018, fully insured), fresher wording. This change applies only to the 44 location pages; the Home/Services/Contact final-CTA sections, which don't reference a suburb, were left as they were.
+
+## Changes made 17 August 2026 (1)
+
+- **Service area expanded from 6 named cities to 44 suburbs, supplied directly by the owner.** The owner provided a list of 38 additional suburbs and confirmed Sunnyside currently services all of them, superseding the 8 August decision to narrow visible copy and `areaServed` to only the six areas shown on the Google Business Profile map. The Google profile itself has not been updated to show this wider polygon — this expansion rests on the owner's direct statement, not on independent verification against the profile or another public source.
+- **Location pages added.** A `locations.html` hub page and 44 individual suburb pages (`locations/<suburb>.html`) were built, one per serviced suburb (the original 6 plus the 38 supplied). Per the owner's direction, these are deliberately templated rather than carrying suburb-specific detail — each page repeats the same service list, trust points and Google rating, with only the suburb name and internal links varying. No suburb-specific claims (bore water, local landmarks, streets worked on) have been invented; none should be added without the owner supplying the specific fact.
+- **`areaServed` schema widened sitewide** on `index.html`, `services.html`, `contact.html`, `pool-advice.html`, `locations.html` and every location page to list all 44 suburbs, replacing the 6-city list.
+- **Contact page's static 6-suburb pill list replaced** with a link to the new `locations.html` hub, so the visible area list doesn't need separate maintenance as suburbs are added or removed.
+- **Nav and footer updated** across all pages to add an "Areas" link to `locations.html`.
+- Sitemap updated with the hub page and all 44 location page URLs.
+
+## Changes made 17 August 2026 (5)
 
 - **`regular-pool-maintenance.html` proof-bar replaced.** The generic "5.0 rated / Since 2018 / 60+" stat bar was swapped for three items specific to this page, confirmed directly by Daniel:
   - **60+ regular pool cleans per month for ongoing clients.** This reinstates a monthly framing for the "60+" figure. Note this reverses the 8 August 2026 correction below, which removed "regular cleans every month" because that framing wasn't confirmed at the time; Daniel has now confirmed the monthly figure is accurate, so it is restored here. The site-wide "60+" wording elsewhere (proof bars, footer signature) has deliberately been left as "regular pool cleans for ongoing clients", without "per month", since that reinstatement was scoped to this page only — flag for a follow-up decision if the monthly framing should be applied site-wide.
   - **On-site advice.** Knowledge and advice is shared with the client during every visit.
   - **Flexible access.** Clients are invited to speak to Sunnyside about access arrangements; scheduling may work on an area/route basis, with clients told when the team will be in their area.
 
-## Changes made 17 August 2026
+## Changes made 17 August 2026 (4)
 
 - **New `regular-pool-maintenance.html` page added**, expanding on the previously bare "Scheduled pool servicing" scope. Content supplied directly by Daniel and added to the "Supplied directly by Sunnyside" evidence tier below:
   - Servicing is offered as one-off, bi-monthly or monthly pool servicing.
   - Each visit covers: removal of leaves/debris/surface contaminants; brushing of walls, steps, tile line and waterline; vacuuming as required; emptying of skimmer and pump baskets; inspection and tidy-up of the equipment area; checks of the pump, filter, visible pipework, valves and chlorinator/sanitising system; filter pressure recorded before and after every service, with backwashing or filter cleaning carried out only when needed; professional water testing and chemical balancing; a chemistry report emailed after the service; and service notes plus relevant before-and-after photos provided to the client.
   - Note: "before-and-after photos" here means per-visit documentation supplied to that client, not the site's own photography gallery — the gallery module remains unbuilt (see "Still outstanding" below), and no such photos are shown on the website itself.
   - CTA copy "Get a Free Pool Health Check" and "Book Your First Service" route to the existing phone (`tel:+61437283972`) and enquiry form (`contact.html#message-form`) channels respectively; no separate booking system or free-check offer mechanism exists beyond those two contact channels.
-- Nav, footer and `sitemap.xml` updated across all pages to link to the new page.
+- Nav, footer and `sitemap.xml` updated across all pages to link to the new page. This page was then folded into the 18 August 2026 (1) nav/footer redesign below: its nav entry became the 6th primary-nav item (Home / Services / Maintenance / Areas / Advice / Contact) rather than sitting where "Knowledge hub" used to be, and its footer adopted the new single-row design instead of the separate Explore/Get-in-touch columns first added here.
 
 ## Changes made 13 August 2026
 
