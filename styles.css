@@ -559,6 +559,9 @@ h2 em { font-style: normal; color: var(--sun-ink); }
   transition: color .18s ease, background-color .18s ease;
 }
 .footer-social a:hover { color: var(--sun); background: rgba(255,255,255,.07); }
+/* the call link is the footer's one CTA, so it keeps brand yellow at rest
+   instead of only picking it up on hover like the social icons beside it. */
+.footer-social a.footer-call { color: var(--sun); }
 .footer-social svg { width: 20px; height: 20px; }
 .footer-allpages {
   color: var(--sun); text-decoration: underline; text-decoration-color: rgba(245,179,30,.4);
