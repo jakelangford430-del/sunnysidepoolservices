@@ -460,6 +460,7 @@ h2 em { font-style: normal; color: var(--sun-ink); }
   outline: none; border-color: var(--navy-700); box-shadow: 0 0 0 3px rgba(20,69,107,.14);
 }
 .field-hint { margin: .4rem 0 0; font-size: .82rem; color: var(--ink-3); }
+.field-error { margin: .4rem 0 0; font-size: .85rem; font-weight: 700; color: #B3261E; }
 .message-form .btn { justify-self: start; margin-top: .3rem; }
 
 /* honeypot — hidden from sighted users and kept out of the tab order, but
