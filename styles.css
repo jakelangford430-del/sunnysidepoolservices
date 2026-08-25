@@ -21,6 +21,12 @@
      2.42:1 on white — a WCAG AA failure at any size. This is 5.93:1 on white
      and 5.41:1 on mist. Never set accent text on light using --sun. */
   --sun-ink:  #8A5A00;
+  /* Campaign-only warm/cool pair (cheers-to-summer.html) — decorative fills and
+     the hero-lead scrim only. Never used for body text: not contrast-checked
+     for that use, unlike the tokens above. */
+  --citrus: #F2762B;
+  --lagoon: #0E6E7C;
+  --sand:   #FFF6EB;
 
   /* surfaces + ink (neutrals carry a navy bias, not pure grey) */
   --paper: #FFFFFF;
@@ -596,3 +602,56 @@ h2 em { font-style: normal; color: var(--sun-ink); }
      that button is in fact hidden (no non-tel final-cta button present) */
   .final-cta:not(:has(a.btn-sun:not([href^="tel:"]))) { padding-bottom: clamp(1.8rem, 4vw, 2.4rem); }
 }
+
+/* --------------------------------------------------------- hero-lead
+   cheers-to-summer.html only: a photo hero with the lead form built in as
+   a floating card, so the ask is above the fold instead of a scroll away. */
+
+.hero-lead { position: relative; background: var(--navy-900); }
+.hero-lead > picture, .hero-lead > picture > img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.hero-lead-scrim {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(115deg, rgba(7,23,38,.95) 0%, rgba(7,23,38,.85) 40%, rgba(14,110,124,.72) 72%, rgba(14,110,124,.52) 100%),
+    linear-gradient(to bottom, rgba(7,23,38,.55) 0%, rgba(7,23,38,0) 24%);
+}
+.hero-lead-inner { position: relative; z-index: 2; padding-block: clamp(2.4rem, 6vw, 4rem) clamp(3.6rem, 7vw, 5rem); }
+.hero-lead-grid { display: grid; grid-template-columns: 1fr; gap: 2.4rem; }
+@media (min-width: 960px) { .hero-lead-grid { grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; } }
+
+.hero-lead h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -.036em;
+  line-height: 1.05; color: #fff; margin: 0 0 .9rem; max-width: 19ch; text-wrap: balance;
+}
+.hero-lead h1 em { font-style: normal; color: var(--sun); }
+.hero-lead-lede { color: rgba(255,255,255,.86); font-size: 1.05rem; margin: 0; max-width: 46ch; }
+
+.hero-trust {
+  display: flex; flex-wrap: wrap; gap: 1.5rem 1.8rem;
+  margin-top: 1.7rem; padding-top: 1.4rem; border-top: 1px solid rgba(255,255,255,.18);
+}
+.hero-trust-item { display: flex; align-items: center; gap: .5rem; font-size: .87rem; font-weight: 700; color: rgba(255,255,255,.9); }
+.hero-trust-item svg { width: 16px; height: 16px; color: var(--sun); flex: none; }
+
+.hero-call-alt { display: block; margin-top: 1.1rem; font-size: .9rem; color: rgba(255,255,255,.72); }
+.hero-call-alt a { color: #fff; font-weight: 700; text-decoration: underline; text-decoration-color: rgba(255,255,255,.4); }
+.hero-call-alt a:hover { text-decoration-color: var(--sun); }
+
+.hero-form-card { background: var(--paper); border-radius: var(--r-lg); padding: clamp(1.6rem, 3vw, 2.1rem); box-shadow: var(--sh-3); }
+.hero-form-card .message-form { margin-top: 1.2rem; }
+.hero-form-note { margin: .9rem 0 0; font-size: .82rem; color: var(--ink-3); text-align: center; }
+
+.hero-lead-wave { position: absolute; left: 0; right: 0; bottom: -1px; z-index: 2; line-height: 0; }
+.hero-lead-wave svg { display: block; width: 100%; height: clamp(28px, 5vw, 52px); }
+
+.section-sand { background: var(--sand); }
+
+.tick-mark.alt { background: var(--citrus); }
+
+/* info tiles that don't link anywhere (a focused lead-gen page keeps the
+   click budget on the one form) get the card look without the "go" chevron
+   or hover-lift a real link would use */
+.card-static { cursor: default; }
+.card-static:hover { transform: none; box-shadow: var(--sh-1); border-color: var(--line); }
