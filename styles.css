@@ -21,7 +21,7 @@
      2.42:1 on white — a WCAG AA failure at any size. This is 5.93:1 on white
      and 5.41:1 on mist. Never set accent text on light using --sun. */
   --sun-ink:  #8A5A00;
-  /* Campaign-only warm/cool pair (cheers-to-summer.html) — decorative fills and
+  /* Campaign-only warm/cool pair (summercheers.html) — decorative fills and
      the hero-lead scrim only. Never used for body text: not contrast-checked
      for that use, unlike the tokens above. */
   --citrus: #F2762B;
@@ -604,7 +604,7 @@ h2 em { font-style: normal; color: var(--sun-ink); }
 }
 
 /* --------------------------------------------------------- hero-lead
-   cheers-to-summer.html only: a photo hero with the lead form built in as
+   summercheers.html only: a photo hero with the lead form built in as
    a floating card, so the ask is above the fold instead of a scroll away. */
 
 .hero-lead { position: relative; background: var(--navy-900); }
