@@ -56,6 +56,11 @@
 /locations/waikiki.html /locations/waikiki 301!
 /locations/woodbridge.html /locations/woodbridge 301!
 /locations/yokine.html /locations/yokine 301!
+/locations/balga.html /locations/balga 301!
+/locations/karrinyup.html /locations/karrinyup 301!
+/locations/doubleview.html /locations/doubleview 301!
+/locations/lesmurdie.html /locations/lesmurdie 301!
+/locations/wembley-downs.html /locations/wembley-downs 301!
 
 # Safety net: catches any .html duplicate not covered above.
 /*.html /:splat 301!
