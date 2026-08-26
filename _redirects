@@ -1,0 +1,61 @@
+# Sunnyside Pool Services -- canonical URL cleanup
+# Collapses every /path.html duplicate into its clean equivalent (301, permanent).
+# Netlify already redirects www to apex, so these rules only need to run once
+# on the apex domain; the www duplicates fall through to them automatically.
+
+/index.html /  301!
+/services.html /services 301!
+
+/regular-pool-maintenance.html /regular-pool-maintenance 301!
+/pool-advice.html /pool-advice 301!
+/contact.html /contact 301!
+/locations.html /locations 301!
+/all-pages.html /all-pages 301!
+
+/locations/perth.html /locations/perth 301!
+/locations/joondalup.html /locations/joondalup 301!
+/locations/ellenbrook.html /locations/ellenbrook 301!
+/locations/fremantle.html /locations/fremantle 301!
+/locations/rockingham.html /locations/rockingham 301!
+/locations/mandurah.html /locations/mandurah 301!
+/locations/applecross.html /locations/applecross 301!
+/locations/atwell.html /locations/atwell 301!
+/locations/aubin-grove.html /locations/aubin-grove 301!
+/locations/baldivis.html /locations/baldivis 301!
+/locations/ballajura.html /locations/ballajura 301!
+/locations/banjup.html /locations/banjup 301!
+/locations/banksia-grove.html /locations/banksia-grove 301!
+/locations/bedfordale.html /locations/bedfordale 301!
+/locations/beeliar.html /locations/beeliar 301!
+/locations/bicton.html /locations/bicton 301!
+/locations/bushmead.html /locations/bushmead 301!
+/locations/byford.html /locations/byford 301!
+/locations/dalkeith.html /locations/dalkeith 301!
+/locations/dianella.html /locations/dianella 301!
+/locations/east-perth.html /locations/east-perth 301!
+/locations/gidgegannup.html /locations/gidgegannup 301!
+/locations/gwelup.html /locations/gwelup 301!
+/locations/halls-head.html /locations/halls-head 301!
+/locations/hillarys.html /locations/hillarys 301!
+/locations/jandakot.html /locations/jandakot 301!
+/locations/kardinya.html /locations/kardinya 301!
+/locations/kewdale.html /locations/kewdale 301!
+/locations/landsdale.html /locations/landsdale 301!
+/locations/leeming.html /locations/leeming 301!
+/locations/mosman-park.html /locations/mosman-park 301!
+/locations/noranda.html /locations/noranda 301!
+/locations/north-perth.html /locations/north-perth 301!
+/locations/orange-grove.html /locations/orange-grove 301!
+/locations/scarborough.html /locations/scarborough 301!
+/locations/sorrento.html /locations/sorrento 301!
+/locations/southern-river.html /locations/southern-river 301!
+/locations/st-james.html /locations/st-james 301!
+/locations/success.html /locations/success 301!
+/locations/swan-view.html /locations/swan-view 301!
+/locations/thornlie.html /locations/thornlie 301!
+/locations/waikiki.html /locations/waikiki 301!
+/locations/woodbridge.html /locations/woodbridge 301!
+/locations/yokine.html /locations/yokine 301!
+
+# Safety net: catches any .html duplicate not covered above.
+/*.html /:splat 301!
