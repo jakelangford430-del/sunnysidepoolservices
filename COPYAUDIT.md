@@ -1,7 +1,13 @@
 # Sunnyside Pool Services copy audit
 
 Original audit: 6 August 2026
-Last updated: 18 August 2026 (2)
+Last updated: 30 August 2026
+
+## Changes made 30 August 2026
+
+- **New page: `privacy-policy.html`.** Added at the owner's direction to disclose, in plain English: what's collected (contact-form fields, direct phone/email contact, and Google Analytics/Tag Manager usage data — the latter already running sitewide via the existing GTM/gtag scripts, now simply disclosed rather than newly added); that submitting details through the site may be used for marketing (offers, reminders, Sunnyside news) as well as replying to the enquiry; that this can be opted out of at any time by emailing `hello@sunnysidepoolservices.com.au` (the address the owner specified for this, distinct from the `info@` address used elsewhere on the site for general enquiries); and that Meta (Facebook/Instagram) separately collects information when someone interacts with Sunnyside's pages there, under Meta's own privacy policy. No Meta Pixel or Conversions API integration exists in this repository's code — the policy's Meta section is written to hold regardless of whether one is added later, and does not claim a specific tracking mechanism. Deliberately not claimed: formal certification of compliance with the Privacy Act 1988 (Cth) or the Australian Privacy Principles, since the business's turnover (which determines whether the Act applies) has not been supplied — consistent with this file's standing rule against unevidenced certification claims. If the owner confirms the Act applies, that language can be added.
+- **Consent notice added at both points of collection.** A short line was added under the Contact page's message form and under the "Claim your summer pool check" form on `cheerstosummer.html` (the site's only two Netlify forms), stating that submitting means agreeing to be contacted about the enquiry and, unless opted out, about future offers, with the opt-out email and a link to the new policy. This is the actual notice-at-collection the owner asked for, not just a standalone legal page nobody would find.
+- **Footer updated sitewide** (all 58 pages that carry the standard footer) to add a "Privacy policy" link beside the existing "All pages →" link, wrapped in a new `.footer-links` flex row so the footer's brand/links two-column layout still holds with a second link present. `all-pages.html` and `sitemap.xml` updated to list the new page.
 
 ## Evidence standard
 
