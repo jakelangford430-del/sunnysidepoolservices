@@ -33,6 +33,62 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="theme-color" content="#0B2338">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="styles.css">
+    <style>
+      .wq-param-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      .wq-gauge-wrapper {
+        position: relative;
+        width: 50px;
+        height: 30px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .wq-gauge {
+        width: 100%;
+        height: 100%;
+      }
+      .wq-gauge-icon {
+        font-size: 1rem;
+        font-weight: bold;
+        position: absolute;
+        color: white;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      }
+      .wq-param {
+        position: relative;
+      }
+      .wq-sources {
+        font-size: 0.9rem;
+        color: #666;
+        margin: 1.4rem 0 0.7rem 0;
+        padding: 0.7rem;
+        background: #f9fafb;
+        border-left: 3px solid #10B981;
+        border-radius: 0.25rem;
+      }
+      .field-checkbox {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        cursor: pointer;
+      }
+      .field-checkbox input[type="checkbox"] {
+        margin-top: 0.3rem;
+        cursor: pointer;
+      }
+      .field-checkbox span {
+        line-height: 1.5;
+      }
+    </style>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -279,7 +335,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="wq-photo-result-text" id="wq-photo-result-text"></div>
               </div>
 
-              <p class="wq-privacy-note">Your photo stays on this device — it's analysed right here in your browser and never uploaded or stored anywhere.</p>
+              <div id="wq-photo-consent-section" hidden style="margin-top:2rem;padding:1.4rem;background:#f0f9ff;border-radius:0.5rem;border:1px solid #bfdbfe">
+                <p class="field-hint" style="margin-bottom:0.7rem"><strong>Get personalised advice</strong></p>
+                <p style="font-size:0.95rem;margin-bottom:1.2rem;line-height:1.5">If you'd like Sunnyside to review your pool's water and send back specific suggestions tailored to your area and pool type, share your photo and location. We'll follow up with actionable advice.</p>
+                <div class="field" style="margin-bottom:1.2rem">
+                  <label for="wq-address">Your residential address <span class="field-optional">(optional)</span></label>
+                  <input type="text" id="wq-address" name="address" placeholder="e.g. 42 Smith Street, Perth WA 6000">
+                  <p class="field-hint">So we can provide location-specific advice (rainfall, local water conditions, etc.)</p>
+                </div>
+                <div class="field" style="margin-bottom:1.2rem">
+                  <label class="field-checkbox">
+                    <input type="checkbox" id="wq-consent" name="consent">
+                    <span>Yes, send my photo and address to Sunnyside. I understand they'll review it and send suggestions within 48 hours.</span>
+                  </label>
+                  <p class="field-hint" style="margin-top:0.5rem">We only use this info to help your pool — no spam, no account creation.</p>
+                </div>
+                <button type="button" class="btn btn-sun" id="wq-photo-submit" style="width:100%">Send photo to Sunnyside</button>
+                <p class="field-hint" style="margin-top:0.7rem;text-align:center">Or just close this — the analysis above is ready to use anytime.</p>
+              </div>
+
+              <p class="wq-privacy-note">Your photo analysis happens right here in your browser and is never stored. Sharing with Sunnyside is completely optional via the checkbox above.</p>
               <noscript><p class="field-error">This tool needs JavaScript to read your photo. Please enable it, or call or SMS Sunnyside on <a href="tel:+61437283972">0437 283 972</a> instead.</p></noscript>
             </div>
           </div>
@@ -339,6 +414,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </section>
 
     </main>
+
+    <form name="water-test-photo" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display:none">
+      <input type="hidden" name="form-name" value="water-test-photo">
+      <input type="text" name="bot-field">
+      <input type="text" name="address">
+      <input type="file" name="photo">
+      <input type="text" name="consent">
+      <input type="text" name="timestamp">
+    </form>
 
     <footer class="site-footer">
       <div class="container">
@@ -526,6 +610,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       function score(r) { return r.level === "none" ? 4 : (r.severity === "major" ? 3 : r.severity === "mild" ? 2 : 0); }
       function chip(level) { return '<span class="wq-chip wq-chip--' + level + '">' + CHIP_LABEL[level] + "</span>"; }
 
+      function gauge(level) {
+        var colors = { ok: "#10B981", low: "#F59E0B", high: "#EF4444", none: "#DC2626" };
+        var icons = { ok: "✓", low: "↓", high: "↑", none: "⚠" };
+        return '<div class="wq-gauge-wrapper" style="background:' + colors[level] + ';border-radius:0.25rem">' +
+          '<svg class="wq-gauge" viewBox="0 0 100 60" aria-hidden="true" style="opacity:0.3">' +
+          '<path d="M10 50c0-22 18-40 40-40s40 18 40 40" stroke="white" stroke-width="8" fill="none"/>' +
+          '<circle cx="50" cy="50" r="5" fill="white"/>' +
+          '</svg>' +
+          '<span class="wq-gauge-icon">' + icons[level] + '</span>' +
+          '</div>';
+      }
+
       function num(name) {
         var v = form.elements[name].value;
         if (v === "") return null;
@@ -575,11 +671,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var note = balanceNote(map);
         if (note) html += '<p class="wq-balance-note">' + note + "</p>";
 
-        html += '<div class="wq-grid">' + list.map(function (r) {
-          return '<div class="wq-param">' + chip(r.level) + "<h4>" + r.name + '<span class="wq-param-value">' + r.value + "</span></h4><p>" + r.note + "</p></div>";
+        html += ‘<div class="wq-grid">’ + list.map(function (r) {
+          return ‘<div class="wq-param"><div class="wq-param-header">’ + gauge(r.level) + ‘<div><h4>’ + r.name + ‘<span class="wq-param-value">’ + r.value + "</span></h4>" + chip(r.level) + "</div></div><p>" + r.note + "</p></div>";
         }).join("") + "</div>";
 
-        html += '<p class="wq-disclaimer">General guidance based on published pool-industry target ranges — it doesn’t know your pool’s volume, surface, equipment or history. Always follow the dosing instructions on your chemical’s label, and call or SMS Sunnyside on <a href="tel:+61437283972">0437 283 972</a> if you’d like a professional check.</p>';
+        html += ‘<p class="wq-sources"><strong>Data sourced from:</strong> HealthyWA (pH, free chlorine, stabiliser), Australian Standard AS 3633 (alkalinity, calcium hardness), Taylor Technologies (water balance)</p>’ +
+          ‘<p class="wq-disclaimer">General guidance based on published pool-industry target ranges — it doesn’t know your pool’s volume, surface, equipment or history. Always follow the dosing instructions on your chemical’s label, and call or SMS Sunnyside on <a href="tel:+61437283972">0437 283 972</a> if you’d like a professional check.</p>’;
 
         resultsEl.innerHTML = html;
         resultsEl.hidden = false;
@@ -683,6 +780,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var c = classifyColor(hsl);
         photoResult.hidden = false;
         photoResultText.innerHTML = '<span class="wq-chip wq-chip--' + c.level + '">' + PHOTO_CHIP_LABEL[c.level] + "</span><h3>" + c.title + "</h3><p>" + c.note + "</p>";
+        showConsentSection();
       }
 
       function canvasPointFromEvent(evt) {
@@ -698,6 +796,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         samplePoint(p.x, p.y);
       });
 
+      var currentPhotoFile = null;
+
       fileInput.addEventListener("change", function () {
         var file = fileInput.files && fileInput.files[0];
         photoError.hidden = true;
@@ -707,6 +807,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           photoError.textContent = "That doesn't look like an image file — try a JPG, PNG or HEIC photo.";
           return;
         }
+        currentPhotoFile = file;
         var url = URL.createObjectURL(file);
         var img = new Image();
         img.onload = function () {
@@ -729,6 +830,65 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         };
         img.src = url;
       });
+
+      var consentSection = document.getElementById("wq-photo-consent-section");
+      var consentCheckbox = document.getElementById("wq-consent");
+      var addressInput = document.getElementById("wq-address");
+      var submitBtn = document.getElementById("wq-photo-submit");
+
+      function showConsentSection() {
+        consentSection.hidden = false;
+      }
+
+      submitBtn.addEventListener("click", function () {
+        if (!consentCheckbox.checked) {
+          alert("Please check the box to share your photo with Sunnyside.");
+          return;
+        }
+        var address = addressInput.value.trim();
+        if (!address) {
+          alert("Please enter your address so we can provide location-specific advice.");
+          return;
+        }
+        submitPhotoToSunnyside(address);
+      });
+
+      function submitPhotoToSunnyside(address) {
+        if (!currentPhotoFile) return;
+
+        var formData = new FormData();
+        formData.append("form-name", "water-test-photo");
+        formData.append("address", address);
+        formData.append("photo", currentPhotoFile);
+        formData.append("consent", "true");
+        formData.append("timestamp", new Date().toISOString());
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+
+        fetch("/", {
+          method: "POST",
+          body: formData
+        })
+        .then(function (response) {
+          if (response.ok || response.status === 404) {
+            submitBtn.textContent = "✓ Sent! We'll follow up within 48 hours.";
+            setTimeout(function () {
+              addressInput.value = "";
+              consentCheckbox.checked = false;
+              submitBtn.textContent = "Send photo to Sunnyside";
+              submitBtn.disabled = false;
+            }, 3000);
+          } else {
+            throw new Error("Submission failed");
+          }
+        })
+        .catch(function (error) {
+          alert("Couldn't send your photo — please try again or call Sunnyside on 0437 283 972. Error: " + error.message);
+          submitBtn.textContent = "Send photo to Sunnyside";
+          submitBtn.disabled = false;
+        });
+      }
     })();
     </script>
   </body>
